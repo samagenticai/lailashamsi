@@ -540,9 +540,11 @@ export default function AdminPanel({ isOpen, onClose, onProductsUpdated }) {
           {view === 'register' && (
             <div className="relative w-full max-w-lg bg-[#141216]/95 border border-[#D4AF37]/40 rounded-3xl p-8 sm:p-10 shadow-2xl backdrop-blur-xl">
               <div className="text-center space-y-2 mb-8">
-                <div className="w-12 h-12 rounded-full bg-[#B76E79]/20 border border-[#B76E79] flex items-center justify-center text-[#E6B8BF] font-cinzel font-bold text-lg mx-auto shadow-lg">
-                  LS
-                </div>
+                <img 
+                  src="/Logo.jpeg" 
+                  alt="Laila Shamsi" 
+                  className="w-14 h-14 rounded-2xl object-contain border border-[#D4AF37]/50 shadow-xl mx-auto"
+                />
                 <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#D4AF37] block">
                   Master Security Initialization
                 </span>
@@ -638,9 +640,11 @@ export default function AdminPanel({ isOpen, onClose, onProductsUpdated }) {
           {view === 'login' && (
             <div className="relative w-full max-w-md bg-[#141216]/95 border border-[#D4AF37]/40 rounded-3xl p-8 sm:p-10 shadow-2xl backdrop-blur-xl">
               <div className="text-center space-y-2 mb-8">
-                <div className="w-12 h-12 rounded-full bg-[#B76E79]/20 border border-[#B76E79] flex items-center justify-center text-[#E6B8BF] font-cinzel font-bold text-lg mx-auto shadow-lg">
-                  LS
-                </div>
+                <img 
+                  src="/Logo.jpeg" 
+                  alt="Laila Shamsi" 
+                  className="w-14 h-14 rounded-2xl object-contain border border-[#D4AF37]/50 shadow-xl mx-auto"
+                />
                 <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#D4AF37] block">
                   Executive Security
                 </span>
@@ -731,9 +735,11 @@ export default function AdminPanel({ isOpen, onClose, onProductsUpdated }) {
             <div>
               <div className="p-5 border-b border-[#241F28] flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#B76E79] to-[#6E2A37] border border-[#D4AF37]/40 flex items-center justify-center text-white font-cinzel font-bold text-sm shadow-md">
-                    LS
-                  </div>
+                  <img 
+                    src="/Logo.jpeg" 
+                    alt="LS" 
+                    className="w-9 h-9 rounded-xl object-contain border border-[#D4AF37]/50 shadow-md"
+                  />
                   <div>
                     <h1 className="font-cinzel text-sm font-bold text-white tracking-wider leading-none">
                       LAILA SHAMSI

@@ -74,12 +74,21 @@ export default function Footer({ onSelectCategory, onOpenAdmin }) {
           
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <span className="font-cinzel tracking-[0.25em] text-2xl font-bold text-white uppercase block">
-              LAILA SHAMSI
-            </span>
-            <p className="text-[9px] uppercase tracking-[0.35em] text-[#B76E79] font-semibold -mt-2">
-              Haute Couture & Luxury Pret
-            </p>
+            <div className="flex items-center gap-3">
+              <img 
+                src="/Logo.jpeg" 
+                alt="Laila Shamsi" 
+                className="h-12 w-12 rounded-xl object-contain border border-[#D4AF37]/50 shadow-md"
+              />
+              <div>
+                <span className="font-cinzel tracking-[0.22em] text-xl font-bold text-white uppercase block leading-tight">
+                  LAILA SHAMSI
+                </span>
+                <p className="text-[8.5px] uppercase tracking-[0.3em] text-[#B76E79] font-semibold mt-0.5">
+                  Haute Couture & Luxury Pret
+                </p>
+              </div>
+            </div>
             <p className="text-xs text-gray-400 font-light leading-relaxed max-w-sm">
               An internationally celebrated high-fashion house dedicated to modern feminine elegance, pure natural textiles, and bespoke handcraft.
             </p>

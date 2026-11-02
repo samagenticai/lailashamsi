@@ -97,18 +97,20 @@ export default function Navbar({
               onSelectCategory('all');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex flex-col items-center justify-center cursor-pointer group px-2"
+            className="flex items-center justify-center cursor-pointer group px-2 py-0.5"
+            title="Laila Shamsi"
           >
-            <div className="flex items-center gap-2.5">
-              <span className={`font-cinzel text-xl sm:text-2xl lg:text-3xl font-bold tracking-[0.22em] uppercase transition-colors ${
-                isScrolled ? 'text-[#1A1A1A] group-hover:text-[#B76E79]' : 'text-white group-hover:text-[#E6B8BF]'
-              }`}>
-                LAILA SHAMSI
-              </span>
+            <div className="relative flex items-center justify-center">
+              <img 
+                src="/Logo.jpeg" 
+                alt="Laila Shamsi Logo" 
+                className={`transition-all duration-300 rounded-xl object-contain border border-[#D4AF37]/50 group-hover:scale-105 group-hover:border-[#D4AF37] ${
+                  isScrolled 
+                    ? 'h-11 w-11 sm:h-13 sm:w-13 shadow-md' 
+                    : 'h-12 w-12 sm:h-16 sm:w-16 shadow-[0_0_25px_rgba(212,175,55,0.35)]'
+                }`}
+              />
             </div>
-            <span className="text-[7.5px] uppercase tracking-[0.35em] text-[#B76E79] font-semibold -mt-0.5">
-              Haute Couture & Pret
-            </span>
           </div>
 
           {/* Right Desktop Nav Links + Icons (Cart, Search, Profile) */}
@@ -229,9 +231,16 @@ export default function Navbar({
           <div className="fixed inset-y-0 left-0 w-4/5 max-w-xs bg-[#1A1A1A] text-white shadow-2xl z-50 flex flex-col justify-between overflow-y-auto p-6 border-r border-[#333333]">
             <div>
               <div className="flex items-center justify-between pb-6 border-b border-[#333]">
-                <div>
-                  <h3 className="font-cinzel text-xl font-bold tracking-wider text-white">LAILA SHAMSI</h3>
-                  <p className="text-[9px] uppercase tracking-[0.3em] text-[#B76E79]">Haute Couture & Pret</p>
+                <div className="flex items-center gap-3">
+                  <img 
+                    src="/Logo.jpeg" 
+                    alt="Laila Shamsi Logo" 
+                    className="h-11 w-11 rounded-xl object-contain border border-[#D4AF37]/50 shadow-md"
+                  />
+                  <div>
+                    <h3 className="font-cinzel text-lg font-bold tracking-wider text-white">LAILA SHAMSI</h3>
+                    <p className="text-[9px] uppercase tracking-[0.3em] text-[#B76E79]">Haute Couture & Pret</p>
+                  </div>
                 </div>
                 <button 
                   onClick={() => setMobileMenuOpen(false)}
