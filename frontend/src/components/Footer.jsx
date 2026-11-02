@@ -79,8 +79,9 @@ export default function Footer({ onSelectCategory, onOpenAdmin, onNavigate }) {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <div 
-              onClick={() => handleNav('/new-arrivals')}
+              onClick={() => handleNav('/')}
               className="flex items-center gap-3 cursor-pointer group"
+              title="Laila Shamsi - Back to Start"
             >
               <img 
                 src="/Logo.jpeg" 

@@ -13,7 +13,9 @@ export default function ProductSection({
   onToggleWishlist,
   selectedCurrency,
   searchQuery,
-  onClearSearch
+  onClearSearch,
+  title = "New Arrivals & Pret '26",
+  badge = "Spring / Summer '26 Fresh Drop"
 }) {
   const [sortBy, setSortBy] = useState('featured');
 
@@ -43,10 +45,10 @@ export default function ProductSection({
           <div>
             <div className="inline-flex items-center gap-2 text-[#B76E79] text-xs font-semibold uppercase tracking-[0.25em] mb-2">
               <SparklesIcon className="w-3.5 h-3.5" />
-              <span>Couture & Pret '26 Drop</span>
+              <span>{badge}</span>
             </div>
-            <h2 className="font-cinzel text-2xl sm:text-4xl font-bold text-[#1A1A1A] uppercase tracking-wide">
-              The Curated Collection
+            <h2 className="text-2xl sm:text-4xl font-bold text-[#1A1A1A] uppercase tracking-wide">
+              {title}
             </h2>
           </div>
 

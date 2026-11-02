@@ -13,6 +13,8 @@ import CategoriesPage from './components/CategoriesPage';
 import SalesPage from './components/SalesPage';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
+import NewArrivalsPage from './components/NewArrivalsPage';
+import HomeSalesSection from './components/HomeSalesSection';
 
 import QuickViewModal from './components/QuickViewModal';
 import CartDrawer from './components/CartDrawer';
@@ -32,10 +34,11 @@ export default function App() {
   const [selectedCurrency, setSelectedCurrency] = useState('USD');
 
   // -----------------------------------------------------------
-  // URL ROUTING & NAVIGATION (Supports /, /categories, /sales, /about, /contact)
+  // URL ROUTING & NAVIGATION (Supports /, /new-arrivals, /categories, /sales, /about, /contact)
   // -----------------------------------------------------------
   const [currentRoute, setCurrentRoute] = useState(() => {
     const path = window.location.pathname.toLowerCase();
+    if (path === '/new-arrivals' || path === '/newarrivals') return '/new-arrivals';
     if (path === '/categories') return '/categories';
     if (path === '/sales' || path === '/sale') return '/sales';
     if (path === '/about') return '/about';
@@ -58,7 +61,9 @@ export default function App() {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
 
-    if (route === '/categories') {
+    if (route === '/new-arrivals') {
+      document.title = 'New Arrivals | LAILA SHAMSI Haute Couture';
+    } else if (route === '/categories') {
       document.title = 'Categories | LAILA SHAMSI Haute Couture';
     } else if (route === '/sales') {
       document.title = 'Seasonal Archive Sale | LAILA SHAMSI';
@@ -74,7 +79,8 @@ export default function App() {
   useEffect(() => {
     const handlePopState = () => {
       const path = window.location.pathname.toLowerCase();
-      if (path === '/categories') setCurrentRoute('/categories');
+      if (path === '/new-arrivals' || path === '/newarrivals') setCurrentRoute('/new-arrivals');
+      else if (path === '/categories') setCurrentRoute('/categories');
       else if (path === '/sales' || path === '/sale') setCurrentRoute('/sales');
       else if (path === '/about') setCurrentRoute('/about');
       else if (path === '/contact') setCurrentRoute('/contact');
@@ -248,8 +254,9 @@ export default function App() {
 
       <main className="flex-1">
         {/* VIEW 1: HOME STOREFRONT */}
-        {(currentRoute === '/' || currentRoute === '/new-arrivals') && (
+        {currentRoute === '/' && (
           <>
+            {/* 1. Hero Section */}
             <Hero
               onExploreClick={() => {
                 const el = document.getElementById('collection');
@@ -257,7 +264,8 @@ export default function App() {
               }}
               onLookbookClick={() => navigateTo('/about')}
             />
-            <ValueProps />
+
+            {/* 2. Categories Section (Directly under Hero) */}
             <Categories
               activeCategory={activeCategory}
               onSelectCategory={(catId) => {
@@ -265,7 +273,10 @@ export default function App() {
                 setSearchQuery('');
                 navigateTo('/categories', catId);
               }}
+              onExploreAll={() => navigateTo('/categories')}
             />
+
+            {/* 3. New Arrivals Collection Section */}
             <ProductSection
               products={products}
               activeCategory={activeCategory}
@@ -281,14 +292,46 @@ export default function App() {
               searchQuery={searchQuery}
               onClearSearch={() => setSearchQuery('')}
             />
+
+            {/* 4. Sales Section with Garment Cards & Explore All Sales Button */}
+            <HomeSalesSection
+              products={products}
+              onQuickView={(product) => setQuickViewProduct(product)}
+              onAddToCart={handleAddToCart}
+              wishlist={wishlist}
+              onToggleWishlist={handleToggleWishlist}
+              selectedCurrency={selectedCurrency}
+              onExploreAll={() => navigateTo('/sales')}
+            />
+
+            {/* 5. Editorial Lookbook Banner */}
             <LookbookBanner
               onShopLook={() => {
                 if (products.length > 0) setQuickViewProduct(products[0]);
               }}
             />
+
+            {/* 6. Brand Heritage Value Props */}
+            <ValueProps />
+
+            {/* 7. Client Reviews */}
             <ReviewsSection />
+
+            {/* 8. Instagram Community */}
             <InstagramFeed />
           </>
+        )}
+
+        {/* VIEW 2: DEDICATED NEW ARRIVALS */}
+        {currentRoute === '/new-arrivals' && (
+          <NewArrivalsPage
+            products={products}
+            onQuickView={(product) => setQuickViewProduct(product)}
+            onAddToCart={handleAddToCart}
+            wishlist={wishlist}
+            onToggleWishlist={handleToggleWishlist}
+            selectedCurrency={selectedCurrency}
+          />
         )}
 
         {/* VIEW 2: CATEGORIES */}

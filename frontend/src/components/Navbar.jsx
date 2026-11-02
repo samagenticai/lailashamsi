@@ -74,7 +74,8 @@ export default function Navbar({
     setMobileMenuOpen(false);
   };
 
-  const isHomeActive = currentRoute === '/' || currentRoute === '/new-arrivals';
+  const isHomeActive = currentRoute === '/';
+  const isNewArrivalsActive = currentRoute === '/new-arrivals';
   const isCategoriesActive = currentRoute === '/categories';
   const isSalesActive = currentRoute === '/sales';
   const isAboutActive = currentRoute === '/about';
@@ -154,7 +155,22 @@ export default function Navbar({
               }`} />
             </button>
 
-            {/* 2. CATEGORIES WITH DROPDOWN (Stitched, Unstitched, Babies) */}
+            {/* 2. NEW ARRIVALS */}
+            <button
+              onClick={() => handleLinkClick('/new-arrivals')}
+              className={`relative py-1.5 transition-colors duration-300 group ${
+                isNewArrivalsActive 
+                  ? 'text-[#B76E79] font-bold' 
+                  : (isScrolled ? 'hover:text-[#B76E79] text-gray-700' : 'hover:text-[#E6B8BF] text-gray-100')
+              }`}
+            >
+              <span>New Arrivals</span>
+              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#B76E79] transform origin-left transition-transform duration-300 ${
+                isNewArrivalsActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+              }`} />
+            </button>
+
+            {/* 3. CATEGORIES WITH DROPDOWN (Stitched, Unstitched, Babies) */}
             <div 
               className="relative group py-1.5"
               onMouseEnter={() => setCategoriesDropdownOpen(true)}
@@ -455,6 +471,17 @@ export default function Navbar({
                 >
                   <span>Home</span>
                   {isHomeActive && <span className="text-[10px]">●</span>}
+                </button>
+
+                {/* New Arrivals */}
+                <button
+                  onClick={() => handleLinkClick('/new-arrivals')}
+                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] flex items-center justify-between transition-colors ${
+                    isNewArrivalsActive ? 'bg-[#B76E79] text-white' : 'text-gray-300 hover:bg-white/10'
+                  }`}
+                >
+                  <span>New Arrivals</span>
+                  {isNewArrivalsActive && <span className="text-[10px]">●</span>}
                 </button>
 
                 {/* Categories with Accordion */}

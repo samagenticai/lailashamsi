@@ -2,7 +2,7 @@ import React from 'react';
 import { CATEGORIES } from '../data/products';
 import { ArrowRightIcon } from './Icons';
 
-export default function Categories({ onSelectCategory, activeCategory }) {
+export default function Categories({ onSelectCategory, activeCategory, onExploreAll }) {
   const displayCategories = CATEGORIES.filter(c => c.id !== 'all');
 
   return (
@@ -14,7 +14,7 @@ export default function Categories({ onSelectCategory, activeCategory }) {
           <span className="text-[10.5px] uppercase tracking-[0.25em] text-[#B76E79] font-bold">
             Curated For Every Occasion
           </span>
-          <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-[#1A1A1A] mt-2 mb-3 uppercase">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] mt-2 mb-3 uppercase tracking-wide">
             Shop By Signature Edit
           </h2>
           <div className="w-16 h-0.5 bg-[#B76E79] mx-auto mb-4" />
@@ -32,12 +32,11 @@ export default function Categories({ onSelectCategory, activeCategory }) {
               <div
                 key={cat.id}
                 onClick={() => {
-                  onSelectCategory(cat.id);
-                  const el = document.getElementById('collection');
-                  el?.scrollIntoView({ behavior: 'smooth' });
+                  if (onSelectCategory) onSelectCategory(cat.id);
                 }}
-                className={`group relative h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border ${isActive ? 'border-[#B76E79] ring-2 ring-[#B76E79]' : 'border-gray-200/80'
-                  }`}
+                className={`group relative h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border ${
+                  isActive ? 'border-[#B76E79] ring-2 ring-[#B76E79]' : 'border-gray-200/80'
+                }`}
               >
                 {/* Background Image with Smooth Zoom */}
                 <img
@@ -57,7 +56,7 @@ export default function Categories({ onSelectCategory, activeCategory }) {
                     {cat.count} Designs Curated
                   </span>
 
-                  <h3 className="font-cinzel text-xl sm:text-2xl font-bold tracking-wide text-white group-hover:text-[#E6B8BF] transition-colors uppercase">
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-wide text-white group-hover:text-[#E6B8BF] transition-colors uppercase">
                     {cat.name}
                   </h3>
 
@@ -76,6 +75,18 @@ export default function Categories({ onSelectCategory, activeCategory }) {
               </div>
             );
           })}
+        </div>
+
+        {/* Explore All Categories Action Button */}
+        <div className="mt-14 text-center">
+          <button
+            type="button"
+            onClick={onExploreAll}
+            className="inline-flex items-center gap-3 px-8 py-3.5 bg-[#1A1A1A] hover:bg-[#B76E79] text-white text-xs uppercase tracking-[0.22em] font-semibold rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-0.5 group"
+          >
+            <span>Explore All Categories</span>
+            <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
         </div>
 
       </div>
