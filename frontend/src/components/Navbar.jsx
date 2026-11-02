@@ -223,47 +223,31 @@ export default function Navbar({
                 }`} />
               </button>
 
-              {/* Warm Ivory & Deep Maroon Dropdown Menu */}
+              {/* Compact & Clean Categories Dropdown Menu */}
               {categoriesDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 z-50">
-                  <div className="w-80 bg-[#FAF5EC] text-[#282321] border border-[#E8DCCB] border-t-2 border-t-[#641E32] rounded-2xl shadow-[0_20px_50px_rgba(40,35,33,0.18)] p-3.5 animate-reveal-up normal-case tracking-normal">
-                    <div className="px-3 py-2 border-b border-[#E8DCCB] flex items-center justify-between mb-1.5">
-                      <span className="font-cinzel text-sm font-bold text-[#641E32]">
-                        Discover Our Collections
-                      </span>
-                      <span className="text-[10px] uppercase tracking-wider text-[#164B3C] font-semibold bg-[#164B3C]/10 px-2 py-0.5 rounded-full">
-                        5 Edits
-                      </span>
-                    </div>
-
-                    <div className="space-y-1">
+                <div className="absolute top-full left-0 pt-2 z-50">
+                  <div className="w-52 bg-[#FAF5EC] text-[#282321] border border-[#E8DCCB] border-t-2 border-t-[#641E32] rounded-xl shadow-[0_12px_30px_rgba(40,35,33,0.16)] p-1.5 animate-reveal-up normal-case tracking-normal">
+                    <div className="space-y-0.5">
                       {dropdownItems.map((item) => (
                         <button
                           key={item.id}
                           onClick={() => handleLinkClick('/categories', item.id)}
-                          className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-[#E8DCCB]/50 transition-all flex items-center justify-between group/item"
+                          className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#641E32] hover:text-[#FAF5EC] text-[#282321] transition-all flex items-center justify-between group/item text-xs font-medium"
                         >
-                          <div>
-                            <p className="font-cinzel text-sm font-semibold text-[#641E32] group-hover/item:text-[#164B3C] transition-colors">
-                              {item.title}
-                            </p>
-                            <p className="text-[11px] text-[#282321]/75 mt-0.5 leading-snug">
-                              {item.subtitle}
-                            </p>
-                          </div>
-                          <span className="text-xs text-[#B89B62] group-hover/item:text-[#641E32] transform transition-transform group-hover/item:translate-x-1 font-bold pl-2">
+                          <span>{item.title}</span>
+                          <span className="text-[11px] text-[#B89B62] group-hover/item:text-[#FAF5EC] transform transition-transform group-hover/item:translate-x-0.5">
                             →
                           </span>
                         </button>
                       ))}
                     </div>
 
-                    <div className="pt-2.5 mt-2 border-t border-[#E8DCCB]">
+                    <div className="pt-1 mt-1 border-t border-[#E8DCCB]">
                       <button
                         onClick={() => handleLinkClick('/categories')}
-                        className="w-full text-center py-2.5 px-4 bg-[#641E32] hover:bg-[#164B3C] text-[#FAF5EC] rounded-xl text-xs font-medium uppercase tracking-[0.15em] transition-all flex items-center justify-center gap-1.5 shadow-sm"
+                        className="w-full text-left px-3 py-1.5 text-[11px] font-semibold text-[#641E32] hover:text-[#164B3C] rounded-lg transition-colors flex items-center justify-between"
                       >
-                        <span>Shop the Collection</span>
+                        <span>All Categories</span>
                         <span>→</span>
                       </button>
                     </div>
