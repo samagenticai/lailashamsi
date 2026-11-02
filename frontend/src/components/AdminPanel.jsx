@@ -285,6 +285,7 @@ export default function AdminPanel({ isOpen, onClose, onProductsUpdated }) {
     setAdminUser(null);
     setView('login');
     onClose();
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
 
   // -----------------------------------------------------------

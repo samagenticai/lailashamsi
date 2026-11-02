@@ -48,3 +48,4 @@ npm run dev # Runs on http://localhost:5173
 - **Email**: `admin@lailashamsi.com`
 - **Password**: `adminPassword123`
 *(Can also be registered via one-time master registration if database is clean)*
+

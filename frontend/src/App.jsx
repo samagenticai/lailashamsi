@@ -40,8 +40,33 @@ export default function App() {
   };
 
   useEffect(() => {
+    // 1. Force browser not to restore previous scroll position (prevents jumping to footer)
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // 2. Clear any lingering hash on initial mount
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
+    // 3. Immediately scroll to the top of the storefront (Hero section)
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+    // 4. Double-check after DOM hydration
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }, 100);
+
     loadProducts();
+
+    return () => clearTimeout(timer);
   }, []);
+
+  const handleCloseAdmin = () => {
+    setIsAdminOpen(false);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  };
   
   // Cart state
   const [cartItems, setCartItems] = useState([
@@ -300,7 +325,7 @@ export default function App() {
       {/* Executive Atelier Admin Portal */}
       <AdminPanel
         isOpen={isAdminOpen}
-        onClose={() => setIsAdminOpen(false)}
+        onClose={handleCloseAdmin}
         onProductsUpdated={loadProducts}
       />
 
