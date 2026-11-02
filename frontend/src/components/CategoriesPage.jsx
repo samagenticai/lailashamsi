@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { CATEGORIES } from '../data/products';
 import ProductCard from './ProductCard';
 import { SparklesIcon } from './Icons';
@@ -9,16 +9,35 @@ export default function CategoriesPage({
   onAddToCart,
   wishlist,
   onToggleWishlist,
-  selectedCurrency
+  selectedCurrency,
+  subFilter = 'all'
 }) {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState(subFilter || 'all');
   const [sortBy, setSortBy] = useState('featured');
+
+  useEffect(() => {
+    if (subFilter) {
+      setSelectedCategory(subFilter);
+    }
+  }, [subFilter]);
 
   const displayCategories = CATEGORIES.filter(c => c.id !== 'all');
 
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
-      return selectedCategory === 'all' || p.category === selectedCategory;
+      if (selectedCategory === 'all') return true;
+      
+      if (selectedCategory === 'stitched') {
+        return p.stitchType === 'stitched' || p.category === 'ready-to-wear' || p.category === 'silk-coords' || p.category === 'luxury-formals';
+      }
+      if (selectedCategory === 'unstitched') {
+        return p.stitchType === 'unstitched' || p.category === 'festive-26';
+      }
+      if (selectedCategory === 'babies') {
+        return p.category === 'babies' || p.stitchType === 'babies' || p.title?.toLowerCase().includes('princess') || p.title?.toLowerCase().includes('babies');
+      }
+
+      return p.category === selectedCategory || p.stitchType === selectedCategory;
     }).sort((a, b) => {
       if (sortBy === 'price-low') return a.price - b.price;
       if (sortBy === 'price-high') return b.price - a.price;
@@ -31,57 +50,111 @@ export default function CategoriesPage({
     <div className="bg-[#FAFAFA] text-[#1A1A1A] pt-28 pb-20">
       
       {/* Header Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF0F2] border border-[#B76E79]/40 text-[#B76E79] text-[10px] uppercase font-mono tracking-widest font-semibold mb-3">
           <SparklesIcon className="w-3.5 h-3.5 text-[#B76E79]" />
           Signature Edits & Silhouettes
         </div>
         <h1 className="font-cinzel text-3xl sm:text-5xl font-bold text-[#1A1A1A] uppercase tracking-wide">
-          Atelier Collections
+          Atelier Categories
         </h1>
-        <div className="w-20 h-0.5 bg-[#B76E79] mx-auto mt-4 mb-4" />
+        <div className="w-20 h-0.5 bg-[#B76E79] mx-auto mt-4 mb-3" />
         <p className="text-xs sm:text-sm text-gray-500 font-light max-w-xl mx-auto leading-relaxed">
-          From ethereal breezy daytime chiffons to majestic bridal zardozi ensembles, explore silhouettes crafted with pure Korean silks and artisan mastery.
+          From stitched ready-to-wear pret to ethereal unstitched raw silks and little princess heirlooms, discover silhouettes crafted with artisan mastery.
         </p>
       </section>
 
-      {/* 4 Signature Visual Category Cards */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayCategories.map((cat) => {
-            const isSelected = selectedCategory === cat.id;
-            return (
-              <div
-                key={cat.id}
-                onClick={() => setSelectedCategory(isSelected ? 'all' : cat.id)}
-                className={`group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border ${
-                  isSelected ? 'border-[#B76E79] ring-2 ring-[#B76E79]' : 'border-gray-200'
-                }`}
-              >
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-                
-                <div className="absolute inset-0 p-5 flex flex-col justify-end text-white">
-                  <span className="text-[9px] uppercase font-mono tracking-widest text-[#E6B8BF] font-semibold">
-                    {cat.count} Designs
-                  </span>
-                  <h3 className="font-cinzel text-lg font-bold uppercase tracking-wider mt-1">
-                    {cat.name}
-                  </h3>
-                  <p className="text-[11px] text-gray-300 line-clamp-1 mt-0.5">
-                    {cat.subtitle}
-                  </p>
-                  <span className="text-[10px] uppercase font-semibold text-[#B76E79] group-hover:text-white mt-2 flex items-center gap-1 transition-colors">
-                    {isSelected ? '✓ Viewing Collection' : 'Select Edit →'}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+      {/* Main 3 High-Level Category Cards (Stitched, Unstitched, Babies) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          {/* Stitched */}
+          <div
+            onClick={() => setSelectedCategory(selectedCategory === 'stitched' ? 'all' : 'stitched')}
+            className={`group relative h-64 sm:h-72 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border ${
+              selectedCategory === 'stitched' ? 'border-[#B76E79] ring-2 ring-[#B76E79]' : 'border-gray-200'
+            }`}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=900&auto=format&fit=crop"
+              alt="Stitched Pret"
+              className="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <span className="text-[9px] uppercase font-mono tracking-widest text-[#E6B8BF] font-semibold">
+                Signature Collection
+              </span>
+              <h3 className="font-cinzel text-xl font-bold uppercase tracking-wider mt-1">
+                Stitched Pret
+              </h3>
+              <p className="text-xs text-gray-300 font-light mt-1">
+                Tailored ready-to-wear ensembles & luxury formal gowns
+              </p>
+              <span className="text-[10px] uppercase font-semibold text-[#B76E79] group-hover:text-white mt-2 flex items-center gap-1">
+                {selectedCategory === 'stitched' ? '✓ Filter Active' : 'Explore Stitched →'}
+              </span>
+            </div>
+          </div>
+
+          {/* Unstitched */}
+          <div
+            onClick={() => setSelectedCategory(selectedCategory === 'unstitched' ? 'all' : 'unstitched')}
+            className={`group relative h-64 sm:h-72 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border ${
+              selectedCategory === 'unstitched' ? 'border-[#B76E79] ring-2 ring-[#B76E79]' : 'border-gray-200'
+            }`}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=900&auto=format&fit=crop"
+              alt="Unstitched Fabric"
+              className="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <span className="text-[9px] uppercase font-mono tracking-widest text-[#E6B8BF] font-semibold">
+                Pure Handloomed Cuts
+              </span>
+              <h3 className="font-cinzel text-xl font-bold uppercase tracking-wider mt-1">
+                Unstitched Fabric
+              </h3>
+              <p className="text-xs text-gray-300 font-light mt-1">
+                Pure raw silks, embroidered chiffons & organza dupattas
+              </p>
+              <span className="text-[10px] uppercase font-semibold text-[#B76E79] group-hover:text-white mt-2 flex items-center gap-1">
+                {selectedCategory === 'unstitched' ? '✓ Filter Active' : 'Explore Unstitched →'}
+              </span>
+            </div>
+          </div>
+
+          {/* Babies */}
+          <div
+            onClick={() => setSelectedCategory(selectedCategory === 'babies' ? 'all' : 'babies')}
+            className={`group relative h-64 sm:h-72 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border ${
+              selectedCategory === 'babies' ? 'border-[#B76E79] ring-2 ring-[#B76E79]' : 'border-gray-200'
+            }`}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=900&auto=format&fit=crop"
+              alt="Babies Couture"
+              className="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <span className="text-[9px] uppercase font-mono tracking-widest text-[#E6B8BF] font-semibold">
+                Little Princess
+              </span>
+              <h3 className="font-cinzel text-xl font-bold uppercase tracking-wider mt-1">
+                Babies Couture
+              </h3>
+              <p className="text-xs text-gray-300 font-light mt-1">
+                Soft heirloom frocks & festive angrakhas for toddlers & infants
+              </p>
+              <span className="text-[10px] uppercase font-semibold text-[#B76E79] group-hover:text-white mt-2 flex items-center gap-1">
+                {selectedCategory === 'babies' ? '✓ Filter Active' : 'Explore Babies →'}
+              </span>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -89,33 +162,31 @@ export default function CategoriesPage({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-4">
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-none">
-            <button
-              onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 text-xs font-semibold rounded-full uppercase tracking-wider transition-all whitespace-nowrap ${
-                selectedCategory === 'all'
-                  ? 'bg-[#1A1A1A] text-white shadow-sm'
-                  : 'bg-white border border-gray-200 text-gray-600 hover:border-[#B76E79]'
-              }`}
-            >
-              All Categories
-            </button>
-            {displayCategories.map((c) => (
+            {[
+              { id: 'all', label: 'All Collections' },
+              { id: 'stitched', label: 'Stitched Pret' },
+              { id: 'unstitched', label: 'Unstitched' },
+              { id: 'babies', label: 'Babies' },
+              { id: 'luxury-formals', label: 'Festive Formals' },
+              { id: 'ready-to-wear', label: 'Ready To Wear' },
+              { id: 'silk-coords', label: 'Silk Co-ords' }
+            ].map((tab) => (
               <button
-                key={c.id}
-                onClick={() => setSelectedCategory(c.id)}
+                key={tab.id}
+                onClick={() => setSelectedCategory(tab.id)}
                 className={`px-4 py-2 text-xs font-semibold rounded-full uppercase tracking-wider transition-all whitespace-nowrap ${
-                  selectedCategory === c.id
+                  selectedCategory === tab.id
                     ? 'bg-[#1A1A1A] text-white shadow-sm'
                     : 'bg-white border border-gray-200 text-gray-600 hover:border-[#B76E79]'
                 }`}
               >
-                {c.name}
+                {tab.label}
               </button>
             ))}
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-xs text-gray-400 font-mono">{filteredProducts.length} Outfits</span>
+            <span className="text-xs text-gray-400 font-mono">{filteredProducts.length} Pieces</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
@@ -132,19 +203,31 @@ export default function CategoriesPage({
 
       {/* Garment Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product._id || product.id}
-              product={product}
-              onQuickView={() => onQuickView(product)}
-              onAddToCart={onAddToCart}
-              isWishlisted={wishlist.includes(product.id)}
-              onToggleWishlist={onToggleWishlist}
-              selectedCurrency={selectedCurrency}
-            />
-          ))}
-        </div>
+        {filteredProducts.length === 0 ? (
+          <div className="text-center py-16 bg-white rounded-3xl border border-gray-200">
+            <p className="font-cinzel text-lg text-gray-700">No garments found in this category.</p>
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className="mt-3 px-6 py-2.5 bg-[#B76E79] text-white rounded-xl text-xs uppercase tracking-wider font-semibold"
+            >
+              Reset to All
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+            {filteredProducts.map((product) => (
+              <ProductCard
+                key={product._id || product.id}
+                product={product}
+                onQuickView={() => onQuickView(product)}
+                onAddToCart={onAddToCart}
+                isWishlisted={wishlist.includes(product.id)}
+                onToggleWishlist={onToggleWishlist}
+                selectedCurrency={selectedCurrency}
+              />
+            ))}
+          </div>
+        )}
       </section>
 
     </div>

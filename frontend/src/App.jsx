@@ -17,7 +17,6 @@ import ContactPage from './components/ContactPage';
 import QuickViewModal from './components/QuickViewModal';
 import CartDrawer from './components/CartDrawer';
 import WishlistModal from './components/WishlistModal';
-import SearchModal from './components/SearchModal';
 import CheckoutModal from './components/CheckoutModal';
 import AdminPanel from './components/AdminPanel';
 
@@ -33,7 +32,7 @@ export default function App() {
   const [selectedCurrency, setSelectedCurrency] = useState('USD');
 
   // -----------------------------------------------------------
-  // URL ROUTING & NAVIGATION (Supports /new-arrivals, /categories, /sales, /about, /contact)
+  // URL ROUTING & NAVIGATION (Supports /, /categories, /sales, /about, /contact)
   // -----------------------------------------------------------
   const [currentRoute, setCurrentRoute] = useState(() => {
     const path = window.location.pathname.toLowerCase();
@@ -41,18 +40,28 @@ export default function App() {
     if (path === '/sales' || path === '/sale') return '/sales';
     if (path === '/about') return '/about';
     if (path === '/contact') return '/contact';
-    return '/new-arrivals';
+    return '/'; // Clean Home root route
   });
+  const [currentSubFilter, setCurrentSubFilter] = useState('all');
 
-  const navigateTo = (route) => {
+  const navigateTo = (route, subFilter = null) => {
     setCurrentRoute(route);
+    if (subFilter) {
+      setCurrentSubFilter(subFilter);
+    }
     window.history.pushState({}, '', route);
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    
+    // Starting fresh from top on home click or smooth scroll on other pages
+    if (route === '/') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
 
     if (route === '/categories') {
       document.title = 'Categories | LAILA SHAMSI Haute Couture';
     } else if (route === '/sales') {
-      document.title = 'Seasonal Sale & Archive | LAILA SHAMSI';
+      document.title = 'Seasonal Archive Sale | LAILA SHAMSI';
     } else if (route === '/about') {
       document.title = 'Atelier Heritage & Craft | LAILA SHAMSI';
     } else if (route === '/contact') {
@@ -69,7 +78,7 @@ export default function App() {
       else if (path === '/sales' || path === '/sale') setCurrentRoute('/sales');
       else if (path === '/about') setCurrentRoute('/about');
       else if (path === '/contact') setCurrentRoute('/contact');
-      else setCurrentRoute('/new-arrivals');
+      else setCurrentRoute('/');
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -232,15 +241,14 @@ export default function App() {
         wishlistCount={wishlist.length}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenWishlist={() => setIsWishlistOpen(true)}
-        onOpenSearch={() => setIsSearchOpen(true)}
         onOpenAdmin={() => setIsAdminOpen(true)}
-        selectedCurrency={selectedCurrency}
-        onChangeCurrency={setSelectedCurrency}
+        products={products}
+        onSelectProduct={(p) => setQuickViewProduct(p)}
       />
 
       <main className="flex-1">
-        {/* VIEW 1: NEW ARRIVALS (HOME STOREFRONT) */}
-        {(currentRoute === '/new-arrivals' || currentRoute === '/') && (
+        {/* VIEW 1: HOME STOREFRONT */}
+        {(currentRoute === '/' || currentRoute === '/new-arrivals') && (
           <>
             <Hero
               onExploreClick={() => {
@@ -255,7 +263,7 @@ export default function App() {
               onSelectCategory={(catId) => {
                 setActiveCategory(catId);
                 setSearchQuery('');
-                navigateTo('/categories');
+                navigateTo('/categories', catId);
               }}
             />
             <ProductSection
@@ -287,6 +295,7 @@ export default function App() {
         {currentRoute === '/categories' && (
           <CategoriesPage
             products={products}
+            subFilter={currentSubFilter}
             onQuickView={(product) => setQuickViewProduct(product)}
             onAddToCart={handleAddToCart}
             wishlist={wishlist}
@@ -310,7 +319,7 @@ export default function App() {
         {/* VIEW 4: ABOUT */}
         {currentRoute === '/about' && (
           <AboutPage
-            onExploreCollection={() => navigateTo('/new-arrivals')}
+            onExploreCollection={() => navigateTo('/')}
           />
         )}
 
@@ -329,7 +338,7 @@ export default function App() {
         onSelectCategory={(catId) => {
           setActiveCategory(catId);
           setSearchQuery('');
-          navigateTo('/categories');
+          navigateTo('/categories', catId);
         }}
       />
 
@@ -365,23 +374,6 @@ export default function App() {
         products={products}
         onAddToCart={handleAddToCart}
         onRemoveFromWishlist={handleToggleWishlist}
-        selectedCurrency={selectedCurrency}
-      />
-
-      {/* Search Modal */}
-      <SearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        products={products}
-        onSelectProduct={(product) => setQuickViewProduct(product)}
-        onApplySearchQuery={(q) => {
-          setSearchQuery(q);
-          navigateTo('/new-arrivals');
-          setTimeout(() => {
-            const el = document.getElementById('collection');
-            el?.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        }}
         selectedCurrency={selectedCurrency}
       />
 

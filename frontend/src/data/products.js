@@ -9,14 +9,28 @@ export const CATEGORIES = [
   {
     id: 'all',
     name: 'All Collections',
-    count: 12
+    count: 14
   },
   {
-    id: 'ready-to-wear',
-    name: 'Ready To Wear',
-    subtitle: 'Chic everyday & festive pret',
+    id: 'stitched',
+    name: 'Stitched Pret',
+    subtitle: 'Luxury ready-to-wear & formals',
     image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=900&auto=format&fit=crop',
-    count: 5
+    count: 6
+  },
+  {
+    id: 'unstitched',
+    name: 'Unstitched Fabric',
+    subtitle: 'Pure handloomed silks & organza',
+    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=900&auto=format&fit=crop',
+    count: 4
+  },
+  {
+    id: 'babies',
+    name: 'Babies & Kids',
+    subtitle: 'Little princess heirloom festive',
+    image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=900&auto=format&fit=crop',
+    count: 2
   },
   {
     id: 'luxury-formals',
@@ -26,18 +40,18 @@ export const CATEGORIES = [
     count: 4
   },
   {
+    id: 'ready-to-wear',
+    name: 'Ready To Wear',
+    subtitle: 'Chic everyday & festive pret',
+    image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=900&auto=format&fit=crop',
+    count: 5
+  },
+  {
     id: 'silk-coords',
     name: 'Silk & Co-ords',
     subtitle: 'Contemporary modern cuts',
     image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=900&auto=format&fit=crop',
     count: 3
-  },
-  {
-    id: 'festive-26',
-    name: 'Summer Festive \'26',
-    subtitle: 'Pastel hues on raw silk',
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=900&auto=format&fit=crop',
-    count: 4
   }
 ];
 
@@ -249,6 +263,59 @@ export const PRODUCTS = [
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     description: 'Dramatic flowing cape featuring hand-embroidered floral vines along the neckline and cuffs, paired with tailored cigarette pants.',
+    isNew: true,
+    stitchType: 'stitched'
+  },
+  {
+    id: 9,
+    title: 'Noor Little Princess Heirloom Angrakha',
+    category: 'babies',
+    categoryLabel: 'Babies & Kids Couture',
+    stitchType: 'babies',
+    price: 95,
+    originalPrice: 120,
+    rating: 5.0,
+    reviewsCount: 22,
+    tag: 'Little Princess',
+    tagColor: 'bg-[#B76E79] text-white',
+    images: [
+      'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?q=80&w=1000&auto=format&fit=crop'
+    ],
+    fabric: 'Pure Crinkle Chiffon with Hypoallergenic Soft Silk Lining',
+    pieces: '2 Piece (Frock & Soft Pajama)',
+    colors: [
+      { name: 'Blush Pink', hex: '#FAD2E1' },
+      { name: 'Butter Gold', hex: '#FFF1C5' }
+    ],
+    sizes: ['0-6M', '6-12M', '1-2Y', '2-4Y', '4-6Y'],
+    description: 'Bespoke heirloom festive ensemble handcrafted for infants and toddlers. Soft feather-light seams and organic breathable silk lining for tender skin.',
+    isNew: true
+  },
+  {
+    id: 10,
+    title: 'Inaya Royal Raw Silk Festive Frock',
+    category: 'babies',
+    categoryLabel: 'Babies & Kids Couture',
+    stitchType: 'babies',
+    price: 85,
+    originalPrice: 110,
+    rating: 4.9,
+    reviewsCount: 31,
+    tag: 'Babies Pret',
+    tagColor: 'bg-[#C59B27] text-white',
+    images: [
+      'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=1000&auto=format&fit=crop'
+    ],
+    fabric: 'Pure Korean Raw Silk with Soft Cotton Lining',
+    pieces: '2 Piece (Flared Dress & Net Dupatta)',
+    colors: [
+      { name: 'Peach Sorbet', hex: '#FFD7BA' },
+      { name: 'Mint Frost', hex: '#D8F3DC' }
+    ],
+    sizes: ['6-12M', '1-2Y', '2-4Y', '4-6Y'],
+    description: 'Charming festive attire featuring handcrafted gota borders and subtle pearl tassels, tailored specifically for memorable family celebrations.',
     isNew: true
   }
 ];
