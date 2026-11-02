@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SparklesIcon, CheckIcon, ArrowRightIcon, LockIcon } from './Icons';
 
-export default function Footer({ onSelectCategory, onOpenAdmin }) {
+export default function Footer({ onSelectCategory, onOpenAdmin, onNavigate }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -11,6 +11,10 @@ export default function Footer({ onSelectCategory, onOpenAdmin }) {
       setSubscribed(true);
       setEmail('');
     }
+  };
+
+  const handleNav = (route) => {
+    if (onNavigate) onNavigate(route);
   };
 
   return (
@@ -74,14 +78,17 @@ export default function Footer({ onSelectCategory, onOpenAdmin }) {
           
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
+            <div 
+              onClick={() => handleNav('/new-arrivals')}
+              className="flex items-center gap-3 cursor-pointer group"
+            >
               <img 
                 src="/Logo.jpeg" 
                 alt="Laila Shamsi" 
-                className="h-12 w-12 rounded-xl object-contain border border-[#D4AF37]/50 shadow-md"
+                className="h-12 w-12 rounded-xl object-contain border border-[#D4AF37]/50 shadow-md group-hover:scale-105 transition-transform"
               />
               <div>
-                <span className="font-cinzel tracking-[0.22em] text-xl font-bold text-white uppercase block leading-tight">
+                <span className="font-cinzel tracking-[0.22em] text-xl font-bold text-white uppercase block leading-tight group-hover:text-[#E6B8BF] transition-colors">
                   LAILA SHAMSI
                 </span>
                 <p className="text-[8.5px] uppercase tracking-[0.3em] text-[#B76E79] font-semibold mt-0.5">
@@ -92,6 +99,12 @@ export default function Footer({ onSelectCategory, onOpenAdmin }) {
             <p className="text-xs text-gray-400 font-light leading-relaxed max-w-sm">
               An internationally celebrated high-fashion house dedicated to modern feminine elegance, pure natural textiles, and bespoke handcraft.
             </p>
+            <button
+              onClick={() => handleNav('/about')}
+              className="text-[11px] text-[#B76E79] hover:underline font-semibold uppercase tracking-wider block"
+            >
+              Read Atelier Story & Heritage →
+            </button>
             
             {/* Social Media Links */}
             <div className="flex items-center gap-4 pt-2">
@@ -117,28 +130,33 @@ export default function Footer({ onSelectCategory, onOpenAdmin }) {
             </h4>
             <ul className="space-y-2.5 text-xs text-gray-400">
               <li>
-                <button onClick={() => onSelectCategory('all')} className="hover:text-[#B76E79] transition-colors">
+                <button onClick={() => { onSelectCategory('all'); handleNav('/new-arrivals'); }} className="hover:text-[#B76E79] transition-colors">
                   New Arrivals
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectCategory('festive-26')} className="hover:text-[#B76E79] transition-colors">
+                <button onClick={() => { onSelectCategory('festive-26'); handleNav('/categories'); }} className="hover:text-[#B76E79] transition-colors">
                   Summer Festive '26
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectCategory('ready-to-wear')} className="hover:text-[#B76E79] transition-colors">
+                <button onClick={() => { onSelectCategory('ready-to-wear'); handleNav('/categories'); }} className="hover:text-[#B76E79] transition-colors">
                   Ready To Wear
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectCategory('luxury-formals')} className="hover:text-[#B76E79] transition-colors">
+                <button onClick={() => { onSelectCategory('luxury-formals'); handleNav('/categories'); }} className="hover:text-[#B76E79] transition-colors">
                   Haute Couture & Formals
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectCategory('silk-coords')} className="hover:text-[#B76E79] transition-colors">
+                <button onClick={() => { onSelectCategory('silk-coords'); handleNav('/categories'); }} className="hover:text-[#B76E79] transition-colors">
                   Modern Silk Co-ords
+                </button>
+              </li>
+              <li>
+                <button onClick={() => handleNav('/sales')} className="text-[#E6B8BF] font-semibold hover:underline transition-colors">
+                  Archival Privilege Sale ✨
                 </button>
               </li>
             </ul>
@@ -150,11 +168,11 @@ export default function Footer({ onSelectCategory, onOpenAdmin }) {
               Client Care
             </h4>
             <ul className="space-y-2.5 text-xs text-gray-400">
-              <li><a href="#collection" className="hover:text-[#B76E79] transition-colors">Bespoke Fitting Guide</a></li>
-              <li><a href="#collection" className="hover:text-[#B76E79] transition-colors">Worldwide Shipping Policy</a></li>
-              <li><a href="#collection" className="hover:text-[#B76E79] transition-colors">14-Day Exchange Guarantee</a></li>
-              <li><a href="#collection" className="hover:text-[#B76E79] transition-colors">Track Consignment</a></li>
-              <li><a href="#collection" className="hover:text-[#B76E79] transition-colors">Private Styling Consult</a></li>
+              <li><button onClick={() => handleNav('/contact')} className="hover:text-[#B76E79] transition-colors text-left">Bespoke Fitting Guide</button></li>
+              <li><button onClick={() => handleNav('/contact')} className="hover:text-[#B76E79] transition-colors text-left">Worldwide Shipping Policy</button></li>
+              <li><button onClick={() => handleNav('/contact')} className="hover:text-[#B76E79] transition-colors text-left">14-Day Exchange Guarantee</button></li>
+              <li><button onClick={() => handleNav('/contact')} className="hover:text-[#B76E79] transition-colors text-left">Track Consignment</button></li>
+              <li><button onClick={() => handleNav('/contact')} className="hover:text-[#B76E79] transition-colors text-left">Private Styling Consult</button></li>
             </ul>
           </div>
 

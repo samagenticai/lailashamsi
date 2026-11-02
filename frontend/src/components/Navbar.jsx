@@ -5,22 +5,20 @@ import {
   SearchIcon, 
   MenuIcon, 
   CloseIcon, 
-  UserIcon,
   ChevronDownIcon
 } from './Icons';
-import BrandLogo from './BrandLogo';
 import { CURRENCY_RATES } from '../data/products';
 
 export default function Navbar({ 
+  currentRoute = '/new-arrivals',
+  onNavigate,
   cartCount = 0, 
   wishlistCount = 0, 
   onOpenCart, 
   onOpenWishlist, 
   onOpenSearch, 
   onOpenAdmin,
-  activeCategory, 
-  onSelectCategory,
-  selectedCurrency,
+  selectedCurrency = 'USD',
   onChangeCurrency
 }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,113 +34,108 @@ export default function Navbar({
   }, []);
 
   const navLinks = [
-    { label: 'New Arrivals', id: 'all' },
-    { label: 'Festive Pret', id: 'festive-26' },
-    { label: 'Couture', id: 'luxury-formals' },
-    { label: 'Silk Co-ords', id: 'silk-coords' },
-    { label: 'Philosophy', href: '#philosophy' },
+    { label: 'New Arrivals', route: '/new-arrivals' },
+    { label: 'Categories', route: '/categories' },
+    { label: 'Sales', route: '/sales' },
+    { label: 'About', route: '/about' },
+    { label: 'Contact', route: '/contact' }
   ];
+
+  const handleLinkClick = (route) => {
+    if (onNavigate) onNavigate(route);
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 transition-all duration-500">
       
-      {/* Floating Glassmorphism Navbar (Transparent at top -> Solid White on scroll) */}
+      {/* Floating Glassmorphism Navbar */}
       <nav className={`w-full transition-all duration-500 ${
         isScrolled 
           ? 'bg-white/95 text-[#1A1A1A] backdrop-blur-md shadow-md py-3.5 border-b border-gray-200/60' 
-          : 'bg-black/25 text-white backdrop-blur-sm py-5 border-b border-white/10'
+          : 'bg-black/35 text-white backdrop-blur-md py-4 sm:py-5 border-b border-white/10'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
           
-          {/* Left Navigation Links (Desktop) */}
-          <div className="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-[0.2em] font-medium">
-            {navLinks.slice(0, 3).map((link) => (
-              <button
-                key={link.label}
-                onClick={() => {
-                  if (link.id) onSelectCategory(link.id);
-                  if (link.href) {
-                    const el = document.querySelector(link.href);
-                    el?.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className={`relative py-1 transition-colors duration-300 group ${
-                  isScrolled ? 'hover:text-[#B76E79]' : 'hover:text-[#E6B8BF]'
-                } ${
-                  activeCategory === link.id ? (isScrolled ? 'text-[#B76E79] font-bold' : 'text-[#E6B8BF] font-bold') : ''
-                }`}
+          {/* ======================================================== */}
+          {/* LEFT: BRAND LOGO (Professional, Clean & High Fashion)   */}
+          {/* ======================================================== */}
+          <div className="flex items-center gap-3">
+            {/* Mobile Hamburger Button */}
+            <div className="flex items-center lg:hidden mr-1">
+              <button 
+                onClick={() => setMobileMenuOpen(true)}
+                className="p-1.5 transition-colors hover:text-[#B76E79]"
+                aria-label="Open menu"
               >
-                <span>{link.label}</span>
-                <span className={`absolute bottom-0 left-0 w-full h-[1.5px] bg-[#B76E79] transform origin-left transition-transform duration-300 ${
-                  activeCategory === link.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                }`} />
+                <MenuIcon className="w-6 h-6" />
               </button>
-            ))}
-          </div>
+            </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex items-center lg:hidden">
-            <button 
-              onClick={() => setMobileMenuOpen(true)}
-              className="p-1.5 transition-colors hover:text-[#B76E79]"
-              aria-label="Open menu"
+            {/* Logo Emblem + Wordmark */}
+            <div 
+              onClick={() => handleLinkClick('/new-arrivals')}
+              className="flex items-center gap-3 cursor-pointer group py-0.5 select-none"
+              title="Laila Shamsi Haute Couture"
             >
-              <MenuIcon className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Centered Brand Emblem & Logo */}
-          <div 
-            onClick={() => {
-              onSelectCategory('all');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="flex items-center justify-center cursor-pointer group px-2 py-0.5"
-            title="Laila Shamsi"
-          >
-            <div className="relative flex items-center justify-center">
               <img 
                 src="/Logo.jpeg" 
                 alt="Laila Shamsi Logo" 
                 className={`transition-all duration-300 rounded-xl object-contain border border-[#D4AF37]/50 group-hover:scale-105 group-hover:border-[#D4AF37] ${
                   isScrolled 
-                    ? 'h-11 w-11 sm:h-13 sm:w-13 shadow-md' 
-                    : 'h-12 w-12 sm:h-16 sm:w-16 shadow-[0_0_25px_rgba(212,175,55,0.35)]'
+                    ? 'h-10 w-10 sm:h-11 sm:w-11 shadow-md' 
+                    : 'h-11 w-11 sm:h-12 sm:w-12 shadow-[0_0_15px_rgba(212,175,55,0.3)]'
                 }`}
               />
+              <div className="flex flex-col text-left">
+                <span className={`font-cinzel text-lg sm:text-xl font-bold tracking-[0.2em] uppercase transition-colors leading-tight ${
+                  isScrolled ? 'text-[#1A1A1A] group-hover:text-[#B76E79]' : 'text-white group-hover:text-[#E6B8BF]'
+                }`}>
+                  LAILA SHAMSI
+                </span>
+                <span className="text-[7.5px] uppercase tracking-[0.35em] text-[#B76E79] font-semibold mt-0.5">
+                  Haute Couture & Pret
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Right Desktop Nav Links + Icons (Cart, Search, Profile) */}
-          <div className="flex items-center space-x-6 sm:space-x-7">
-            
-            {/* Desktop right link */}
-            <div className="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-[0.2em] font-medium mr-2">
-              {navLinks.slice(3).map((link) => (
+          {/* ======================================================== */}
+          {/* CENTER: 5 NAVIGATION ROUTE LINKS (Desktop)              */}
+          {/* ======================================================== */}
+          <div className="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-[0.2em] font-medium">
+            {navLinks.map((link) => {
+              const isActive = currentRoute === link.route || (link.route === '/new-arrivals' && currentRoute === '/');
+
+              return (
                 <button
                   key={link.label}
-                  onClick={() => {
-                    if (link.id) onSelectCategory(link.id);
-                    if (link.href) {
-                      const el = document.querySelector(link.href);
-                      el?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className={`relative py-1 transition-colors duration-300 group ${
-                    isScrolled ? 'hover:text-[#B76E79]' : 'hover:text-[#E6B8BF]'
+                  onClick={() => handleLinkClick(link.route)}
+                  className={`relative py-1.5 transition-colors duration-300 group ${
+                    isActive 
+                      ? 'text-[#B76E79] font-bold' 
+                      : (isScrolled ? 'hover:text-[#B76E79] text-gray-700' : 'hover:text-[#E6B8BF] text-gray-100')
                   }`}
                 >
                   <span>{link.label}</span>
-                  <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#B76E79] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                  <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#B76E79] transform origin-left transition-transform duration-300 ${
+                    isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`} />
                 </button>
-              ))}
-            </div>
+              );
+            })}
+          </div>
 
+          {/* ======================================================== */}
+          {/* RIGHT: CURRENCY + SEARCH + WISHLIST + SHOPPING CART      */}
+          {/* ======================================================== */}
+          <div className="flex items-center space-x-4 sm:space-x-5">
+            
             {/* Currency Selector */}
             <div className="relative hidden sm:block">
               <button 
                 onClick={() => setCurrencyDropdownOpen(!currencyDropdownOpen)}
-                className={`flex items-center gap-1 text-[11px] font-mono tracking-wider transition-colors py-1 px-2 rounded-full border ${
+                className={`flex items-center gap-1 text-[11px] font-mono tracking-wider transition-colors py-1 px-2.5 rounded-full border ${
                   isScrolled 
                     ? 'border-gray-200 text-gray-700 hover:border-[#B76E79]' 
                     : 'border-white/20 text-white/90 hover:border-white'
@@ -158,7 +151,7 @@ export default function Navbar({
                     <button
                       key={curr}
                       onClick={() => {
-                        onChangeCurrency(curr);
+                        if (onChangeCurrency) onChangeCurrency(curr);
                         setCurrencyDropdownOpen(false);
                       }}
                       className={`w-full text-left px-3 py-1.5 text-xs flex items-center justify-between hover:bg-[#B76E79]/20 transition-colors ${
@@ -173,7 +166,7 @@ export default function Navbar({
               )}
             </div>
 
-            {/* Search Icon */}
+            {/* 1. Search Icon */}
             <button 
               onClick={onOpenSearch}
               className={`p-1.5 transition-colors rounded-full ${
@@ -184,7 +177,7 @@ export default function Navbar({
               <SearchIcon className="w-4 h-4" />
             </button>
 
-            {/* Wishlist / Profile Icon */}
+            {/* 2. Wishlist Icon with Counter */}
             <button 
               onClick={onOpenWishlist}
               className={`relative p-1.5 transition-colors rounded-full ${
@@ -200,7 +193,7 @@ export default function Navbar({
               )}
             </button>
 
-            {/* Shopping Cart Icon (Minimalist with glowing badge) */}
+            {/* 3. Shopping Cart Icon with Counter */}
             <button 
               onClick={onOpenCart}
               className={`relative p-2 rounded-full transition-all group flex items-center gap-1.5 ${
@@ -221,7 +214,9 @@ export default function Navbar({
         </div>
       </nav>
 
-      {/* Mobile Slide-Over Menu */}
+      {/* ======================================================== */}
+      {/* MOBILE SLIDE-OVER MENU                                  */}
+      {/* ======================================================== */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div 
@@ -264,35 +259,33 @@ export default function Navbar({
                 </button>
               </div>
 
-              {/* Navigation Links */}
-              <div className="space-y-3">
-                {navLinks.map((link) => (
-                  <button
-                    key={link.label}
-                    onClick={() => {
-                      if (link.id) onSelectCategory(link.id);
-                      if (link.href) {
-                        const el = document.querySelector(link.href);
-                        el?.scrollIntoView({ behavior: 'smooth' });
-                      }
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`w-full text-left py-2.5 px-3 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] flex items-center justify-between transition-colors ${
-                      activeCategory === link.id 
-                        ? 'bg-[#B76E79] text-white' 
-                        : 'text-gray-300 hover:bg-white/10'
-                    }`}
-                  >
-                    <span>{link.label}</span>
-                  </button>
-                ))}
+              {/* Navigation Route Links */}
+              <div className="space-y-2.5">
+                {navLinks.map((link) => {
+                  const isActive = currentRoute === link.route || (link.route === '/new-arrivals' && currentRoute === '/');
+
+                  return (
+                    <button
+                      key={link.label}
+                      onClick={() => handleLinkClick(link.route)}
+                      className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] flex items-center justify-between transition-colors ${
+                        isActive 
+                          ? 'bg-[#B76E79] text-white' 
+                          : 'text-gray-300 hover:bg-white/10'
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      {isActive && <span className="text-[10px] font-mono">●</span>}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             <div className="pt-6 border-t border-[#333] text-xs text-gray-400 space-y-2">
               <div className="flex items-center justify-between py-1">
                 <span>Active Currency:</span>
-                <span className="font-bold text-[#B76E79] font-mono">{selectedCurrency} ({CURRENCY_RATES[selectedCurrency].symbol})</span>
+                <span className="font-bold text-[#B76E79] font-mono">{selectedCurrency} ({CURRENCY_RATES[selectedCurrency]?.symbol || '$'})</span>
               </div>
               <p className="text-[11px] text-gray-500">
                 Pure Korean raw silk, organza & handcrafted zardozi embroidery.

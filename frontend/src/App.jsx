@@ -9,6 +9,11 @@ import ReviewsSection from './components/ReviewsSection';
 import InstagramFeed from './components/InstagramFeed';
 import Footer from './components/Footer';
 
+import CategoriesPage from './components/CategoriesPage';
+import SalesPage from './components/SalesPage';
+import AboutPage from './components/AboutPage';
+import ContactPage from './components/ContactPage';
+
 import QuickViewModal from './components/QuickViewModal';
 import CartDrawer from './components/CartDrawer';
 import WishlistModal from './components/WishlistModal';
@@ -26,6 +31,49 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCurrency, setSelectedCurrency] = useState('USD');
+
+  // -----------------------------------------------------------
+  // URL ROUTING & NAVIGATION (Supports /new-arrivals, /categories, /sales, /about, /contact)
+  // -----------------------------------------------------------
+  const [currentRoute, setCurrentRoute] = useState(() => {
+    const path = window.location.pathname.toLowerCase();
+    if (path === '/categories') return '/categories';
+    if (path === '/sales' || path === '/sale') return '/sales';
+    if (path === '/about') return '/about';
+    if (path === '/contact') return '/contact';
+    return '/new-arrivals';
+  });
+
+  const navigateTo = (route) => {
+    setCurrentRoute(route);
+    window.history.pushState({}, '', route);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+    if (route === '/categories') {
+      document.title = 'Categories | LAILA SHAMSI Haute Couture';
+    } else if (route === '/sales') {
+      document.title = 'Seasonal Sale & Archive | LAILA SHAMSI';
+    } else if (route === '/about') {
+      document.title = 'Atelier Heritage & Craft | LAILA SHAMSI';
+    } else if (route === '/contact') {
+      document.title = 'Private Appointments & Contact | LAILA SHAMSI';
+    } else {
+      document.title = 'LAILA SHAMSI | Luxury Pret & Couture For Women';
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.toLowerCase();
+      if (path === '/categories') setCurrentRoute('/categories');
+      else if (path === '/sales' || path === '/sale') setCurrentRoute('/sales');
+      else if (path === '/about') setCurrentRoute('/about');
+      else if (path === '/contact') setCurrentRoute('/contact');
+      else setCurrentRoute('/new-arrivals');
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
   
   // Load dynamic catalog from MongoDB backend
   const loadProducts = async () => {
@@ -178,87 +226,110 @@ export default function App() {
 
       {/* Floating Glassmorphic Navbar */}
       <Navbar
+        currentRoute={currentRoute}
+        onNavigate={navigateTo}
         cartCount={totalCartCount}
         wishlistCount={wishlist.length}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenWishlist={() => setIsWishlistOpen(true)}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenAdmin={() => setIsAdminOpen(true)}
-        activeCategory={activeCategory}
-        onSelectCategory={(catId) => {
-          setActiveCategory(catId);
-          setSearchQuery('');
-          const el = document.getElementById('collection');
-          el?.scrollIntoView({ behavior: 'smooth' });
-        }}
         selectedCurrency={selectedCurrency}
         onChangeCurrency={setSelectedCurrency}
       />
 
       <main className="flex-1">
-        {/* Full-Screen Cinematic Slow-Zoom Hero */}
-        <Hero
-          onExploreClick={() => {
-            const el = document.getElementById('collection');
-            el?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          onLookbookClick={() => {
-            const el = document.getElementById('philosophy');
-            el?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        />
+        {/* VIEW 1: NEW ARRIVALS (HOME STOREFRONT) */}
+        {(currentRoute === '/new-arrivals' || currentRoute === '/') && (
+          <>
+            <Hero
+              onExploreClick={() => {
+                const el = document.getElementById('collection');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              onLookbookClick={() => navigateTo('/about')}
+            />
+            <ValueProps />
+            <Categories
+              activeCategory={activeCategory}
+              onSelectCategory={(catId) => {
+                setActiveCategory(catId);
+                setSearchQuery('');
+                navigateTo('/categories');
+              }}
+            />
+            <ProductSection
+              products={products}
+              activeCategory={activeCategory}
+              onSelectCategory={(catId) => {
+                setActiveCategory(catId);
+                setSearchQuery('');
+              }}
+              onQuickView={(product) => setQuickViewProduct(product)}
+              onAddToCart={handleAddToCart}
+              wishlist={wishlist}
+              onToggleWishlist={handleToggleWishlist}
+              selectedCurrency={selectedCurrency}
+              searchQuery={searchQuery}
+              onClearSearch={() => setSearchQuery('')}
+            />
+            <LookbookBanner
+              onShopLook={() => {
+                if (products.length > 0) setQuickViewProduct(products[0]);
+              }}
+            />
+            <ReviewsSection />
+            <InstagramFeed />
+          </>
+        )}
 
-        {/* Minimalist Luxury Value Props */}
-        <ValueProps />
+        {/* VIEW 2: CATEGORIES */}
+        {currentRoute === '/categories' && (
+          <CategoriesPage
+            products={products}
+            onQuickView={(product) => setQuickViewProduct(product)}
+            onAddToCart={handleAddToCart}
+            wishlist={wishlist}
+            onToggleWishlist={handleToggleWishlist}
+            selectedCurrency={selectedCurrency}
+          />
+        )}
 
-        {/* Signature Categories */}
-        <Categories
-          activeCategory={activeCategory}
-          onSelectCategory={(catId) => {
-            setActiveCategory(catId);
-            setSearchQuery('');
-          }}
-        />
+        {/* VIEW 3: SALES */}
+        {currentRoute === '/sales' && (
+          <SalesPage
+            products={products}
+            onQuickView={(product) => setQuickViewProduct(product)}
+            onAddToCart={handleAddToCart}
+            wishlist={wishlist}
+            onToggleWishlist={handleToggleWishlist}
+            selectedCurrency={selectedCurrency}
+          />
+        )}
 
-        {/* Asymmetrical Modern Masonry Grid */}
-        <ProductSection
-          products={products}
-          activeCategory={activeCategory}
-          onSelectCategory={(catId) => {
-            setActiveCategory(catId);
-            setSearchQuery('');
-          }}
-          onQuickView={(product) => setQuickViewProduct(product)}
-          onAddToCart={handleAddToCart}
-          wishlist={wishlist}
-          onToggleWishlist={handleToggleWishlist}
-          selectedCurrency={selectedCurrency}
-          searchQuery={searchQuery}
-          onClearSearch={() => setSearchQuery('')}
-        />
+        {/* VIEW 4: ABOUT */}
+        {currentRoute === '/about' && (
+          <AboutPage
+            onExploreCollection={() => navigateTo('/new-arrivals')}
+          />
+        )}
 
-        {/* Split Screen Brand Story & Philosophy */}
-        <LookbookBanner
-          onShopLook={() => {
-            if (products.length > 0) setQuickViewProduct(products[0]);
-          }}
-        />
-
-        {/* Customer Reviews & International Press */}
-        <ReviewsSection />
-
-        {/* Instagram Lookbook Community */}
-        <InstagramFeed />
+        {/* VIEW 5: CONTACT */}
+        {currentRoute === '/contact' && (
+          <ContactPage
+            onShowToast={showToast}
+          />
+        )}
       </main>
 
       {/* Minimalist Dark Footer */}
       <Footer
         onOpenAdmin={() => setIsAdminOpen(true)}
+        onNavigate={navigateTo}
         onSelectCategory={(catId) => {
           setActiveCategory(catId);
           setSearchQuery('');
-          const el = document.getElementById('collection');
-          el?.scrollIntoView({ behavior: 'smooth' });
+          navigateTo('/categories');
         }}
       />
 
@@ -305,8 +376,11 @@ export default function App() {
         onSelectProduct={(product) => setQuickViewProduct(product)}
         onApplySearchQuery={(q) => {
           setSearchQuery(q);
-          const el = document.getElementById('collection');
-          el?.scrollIntoView({ behavior: 'smooth' });
+          navigateTo('/new-arrivals');
+          setTimeout(() => {
+            const el = document.getElementById('collection');
+            el?.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
         }}
         selectedCurrency={selectedCurrency}
       />
