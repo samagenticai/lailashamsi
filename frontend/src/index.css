@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@layer base {
+    :root {
+        --font-cinzel: 'Cinzel', serif;
+        --font-serif: 'Playfair Display', Georgia, serif;
+        --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+        font-family: var(--font-sans);
+        background-color: #FAFAFA;
+        color: #1A1A1A;
+        overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    .font-cinzel {
+        font-family: var(--font-cinzel);
+        letter-spacing: 0.05em;
+    }
+
+    .font-serif-luxury {
+        font-family: var(--font-serif);
+    }
+
+    .font-body {
+        font-family: var(--font-sans);
+    }
+}
+
+/* ========================================================
+   'MIDNIGHT ELEGANCE & ROSE GOLD' TOKENS & ACCENTS
+   ======================================================== */
+
+.rosegold-gradient-text {
+    background: linear-gradient(135deg, #E6B8BF 0%, #B76E79 45%, #8C4751 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rosegold-gradient-bg {
+    background: linear-gradient(135deg, #C4828C 0%, #B76E79 50%, #944D57 100%);
+}
+
+.rosegold-border-glow {
+    box-shadow: 0 0 20px rgba(183, 110, 121, 0.35);
+}
+
+.charcoal-glass {
+    background: rgba(26, 26, 26, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.white-glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* ========================================================
+   CINEMATIC & LIQUID ANIMATIONS (FOR THE 'WOW' FACTOR)
+   ======================================================== */
+
+@keyframes slowCinematicZoom {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes pulseRoseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(183, 110, 121, 0.6), 0 10px 25px -5px rgba(183, 110, 121, 0.4);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 0 12px rgba(183, 110, 121, 0), 0 15px 30px -5px rgba(183, 110, 121, 0.6);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes floatGentle {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes panSlow {
+    0% {
+        transform: scale(1.1) translate(0, 0);
+    }
+
+    50% {
+        transform: scale(1.15) translate(-2%, -2%);
+    }
+
+    100% {
+        transform: scale(1.1) translate(0, 0);
+    }
+}
+
+@keyframes revealSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmerLiquid {
+    0% {
+        transform: translateX(-150%) skewX(-25deg);
+    }
+
+    100% {
+        transform: translateX(250%) skewX(-25deg);
+    }
+}
+
+.animate-cinematic-zoom {
+    animation: slowCinematicZoom 16s ease-in-out infinite;
+}
+
+.animate-pulse-rosegold {
+    animation: pulseRoseGlow 3s infinite;
+}
+
+.animate-float-gentle {
+    animation: floatGentle 4.5s ease-in-out infinite;
+}
+
+.animate-pan-slow {
+    animation: panSlow 20s ease-in-out infinite alternate;
+}
+
+.animate-reveal-up {
+    animation: revealSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Liquid / Magnetic Hover for Buttons */
+.liquid-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.liquid-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 130%;
+    height: 0;
+    padding-bottom: 130%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease-out;
+    pointer-events: none;
+}
+
+.liquid-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Image zoom hover effect */
+.hover-zoom-smooth {
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-zoom-smooth:hover {
+    transform: scale(1.05);
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #B76E79;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #944D57;
+}
+
+/* Admin Luxury Dark Scrollbar */
+html.admin-modal-open,
+body.admin-modal-open {
+    overflow: hidden !important;
+}
+
+.admin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #382E40 transparent;
+}
+
+.admin-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.admin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.admin-scrollbar::-webkit-scrollbar-thumb {
+    background: #382E40;
+    border-radius: 9999px;
+}
+
+.admin-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #B76E79;
+}
