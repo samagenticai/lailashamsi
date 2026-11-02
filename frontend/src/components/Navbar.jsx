@@ -193,56 +193,97 @@ export default function Navbar({
 
               {/* Luxury Glassmorphic Dropdown Menu */}
               {categoriesDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
-                  <div className="w-64 bg-[#141217]/95 backdrop-blur-xl border border-[#D4AF37]/40 rounded-2xl shadow-2xl p-2.5 animate-reveal-up text-white">
-                    <div className="px-3 py-1.5 border-b border-[#2A2333] mb-1">
-                      <span className="text-[9px] uppercase font-mono tracking-[0.25em] text-[#D4AF37] font-semibold">
-                        Curated Categories
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 z-50">
+                  <div className="w-80 bg-[#16131A]/98 backdrop-blur-2xl border border-[#D4AF37]/40 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-3 animate-reveal-up text-white">
+                    {/* Header */}
+                    <div className="px-3 py-2 border-b border-white/10 flex items-center justify-between mb-1.5">
+                      <span className="text-[11px] uppercase font-bold tracking-[0.2em] text-[#D4AF37]">
+                        Signature Categories
+                      </span>
+                      <span className="text-[10px] uppercase tracking-wider text-[#E6B8BF] font-semibold bg-white/5 px-2 py-0.5 rounded-full border border-white/10">
+                        3 Edits
                       </span>
                     </div>
 
-                    {/* Stitched */}
-                    <button
-                      onClick={() => handleLinkClick('/categories', 'stitched')}
-                      className="w-full text-left p-2.5 rounded-xl hover:bg-[#251E2E] transition-all flex items-center justify-between group/item"
-                    >
-                      <div>
-                        <p className="text-xs font-semibold text-white group-hover/item:text-[#E6B8BF]">Stitched Pret</p>
-                        <p className="text-[10px] text-gray-400">Ready to wear & luxury formals</p>
-                      </div>
-                      <span className="text-[10px] text-[#B76E79] opacity-0 group-hover/item:opacity-100 transition-opacity">→</span>
-                    </button>
+                    <div className="space-y-1">
+                      {/* 1. Stitched */}
+                      <button
+                        onClick={() => handleLinkClick('/categories', 'stitched')}
+                        className="w-full text-left p-3 rounded-xl hover:bg-white/[0.08] border border-transparent hover:border-white/10 transition-all flex items-center justify-between group/item"
+                      >
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <p className="text-sm font-bold text-white tracking-wide group-hover/item:text-[#E6B8BF] transition-colors">
+                              Stitched
+                            </p>
+                            <span className="text-[9.5px] uppercase tracking-wider font-semibold text-[#D4AF37] bg-[#D4AF37]/15 px-1.5 py-0.5 rounded">
+                              Pret
+                            </span>
+                          </div>
+                          <p className="text-xs text-gray-400 group-hover/item:text-gray-300 mt-0.5 leading-normal">
+                            Ready to wear luxury formals & daily pret
+                          </p>
+                        </div>
+                        <span className="text-sm text-[#B76E79] group-hover/item:text-[#E6B8BF] transform transition-transform group-hover/item:translate-x-1 font-bold pl-2">
+                          →
+                        </span>
+                      </button>
 
-                    {/* Unstitched */}
-                    <button
-                      onClick={() => handleLinkClick('/categories', 'unstitched')}
-                      className="w-full text-left p-2.5 rounded-xl hover:bg-[#251E2E] transition-all flex items-center justify-between group/item"
-                    >
-                      <div>
-                        <p className="text-xs font-semibold text-white group-hover/item:text-[#E6B8BF]">Unstitched Fabric</p>
-                        <p className="text-[10px] text-gray-400">Pure raw silks & chiffon cuts</p>
-                      </div>
-                      <span className="text-[10px] text-[#B76E79] opacity-0 group-hover/item:opacity-100 transition-opacity">→</span>
-                    </button>
+                      {/* 2. Unstitched */}
+                      <button
+                        onClick={() => handleLinkClick('/categories', 'unstitched')}
+                        className="w-full text-left p-3 rounded-xl hover:bg-white/[0.08] border border-transparent hover:border-white/10 transition-all flex items-center justify-between group/item"
+                      >
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <p className="text-sm font-bold text-white tracking-wide group-hover/item:text-[#E6B8BF] transition-colors">
+                              Unstitched
+                            </p>
+                            <span className="text-[9.5px] uppercase tracking-wider font-semibold text-[#D4AF37] bg-[#D4AF37]/15 px-1.5 py-0.5 rounded">
+                              Fabric
+                            </span>
+                          </div>
+                          <p className="text-xs text-gray-400 group-hover/item:text-gray-300 mt-0.5 leading-normal">
+                            Pure Korean raw silk & embroidered chiffon cuts
+                          </p>
+                        </div>
+                        <span className="text-sm text-[#B76E79] group-hover/item:text-[#E6B8BF] transform transition-transform group-hover/item:translate-x-1 font-bold pl-2">
+                          →
+                        </span>
+                      </button>
 
-                    {/* Babies */}
-                    <button
-                      onClick={() => handleLinkClick('/categories', 'babies')}
-                      className="w-full text-left p-2.5 rounded-xl hover:bg-[#251E2E] transition-all flex items-center justify-between group/item"
-                    >
-                      <div>
-                        <p className="text-xs font-semibold text-white group-hover/item:text-[#E6B8BF]">Babies Couture</p>
-                        <p className="text-[10px] text-gray-400">Little princess heirloom festive</p>
-                      </div>
-                      <span className="text-[10px] text-[#B76E79] opacity-0 group-hover/item:opacity-100 transition-opacity">→</span>
-                    </button>
+                      {/* 3. Babies */}
+                      <button
+                        onClick={() => handleLinkClick('/categories', 'babies')}
+                        className="w-full text-left p-3 rounded-xl hover:bg-white/[0.08] border border-transparent hover:border-white/10 transition-all flex items-center justify-between group/item"
+                      >
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <p className="text-sm font-bold text-white tracking-wide group-hover/item:text-[#E6B8BF] transition-colors">
+                              Babies
+                            </p>
+                            <span className="text-[9.5px] uppercase tracking-wider font-semibold text-[#D4AF37] bg-[#D4AF37]/15 px-1.5 py-0.5 rounded">
+                              Couture
+                            </span>
+                          </div>
+                          <p className="text-xs text-gray-400 group-hover/item:text-gray-300 mt-0.5 leading-normal">
+                            Little princess heirloom festive frocks
+                          </p>
+                        </div>
+                        <span className="text-sm text-[#B76E79] group-hover/item:text-[#E6B8BF] transform transition-transform group-hover/item:translate-x-1 font-bold pl-2">
+                          →
+                        </span>
+                      </button>
+                    </div>
 
-                    <div className="pt-1.5 mt-1 border-t border-[#2A2333]">
+                    {/* Footer Explore All */}
+                    <div className="pt-2 mt-1.5 border-t border-white/10">
                       <button
                         onClick={() => handleLinkClick('/categories')}
-                        className="w-full text-center py-1 text-[11px] text-[#D4AF37] hover:underline font-mono"
+                        className="w-full text-center py-2 px-3 text-xs font-bold text-[#E6B8BF] hover:text-[#D4AF37] hover:bg-white/5 rounded-xl uppercase tracking-[0.16em] transition-all flex items-center justify-center gap-1.5 group/all"
                       >
-                        Explore All Collections →
+                        <span>Explore All Categories</span>
+                        <span className="transform transition-transform group-hover/all:translate-x-1">→</span>
                       </button>
                     </div>
                   </div>
@@ -350,9 +391,9 @@ export default function Navbar({
               {/* Floating Instant Search Results Dropdown */}
               {isSearchExpanded && searchQuery.trim().length > 0 && (
                 <div className="absolute top-full right-0 mt-2 w-72 sm:w-88 bg-[#141217]/95 backdrop-blur-xl border border-[#D4AF37]/40 rounded-2xl shadow-2xl p-3 z-50 animate-reveal-up text-white">
-                  <div className="flex items-center justify-between pb-2 border-b border-[#2C2335] mb-2 text-[10px] font-mono text-gray-400">
+                  <div className="flex items-center justify-between pb-2 border-b border-[#2C2335] mb-2 text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">
                     <span>LIVE RESULTS</span>
-                    <span className="text-[#D4AF37]">{searchResults.length} matches</span>
+                    <span className="text-[#D4AF37] font-semibold">{searchResults.length} matches</span>
                   </div>
 
                   <div className="max-h-72 overflow-y-auto space-y-2 admin-scrollbar">
@@ -376,7 +417,7 @@ export default function Navbar({
                           />
                           <div className="flex-1 min-w-0">
                             <p className="text-xs font-semibold text-white truncate">{item.title}</p>
-                            <p className="text-[10px] text-[#D4AF37] font-mono">${item.price} • {item.categoryLabel || item.category}</p>
+                            <p className="text-[11px] font-semibold text-[#D4AF37] mt-0.5">${item.price} • {item.categoryLabel || item.category}</p>
                           </div>
                           <span className="text-xs text-[#B76E79]">→</span>
                         </div>
@@ -497,30 +538,33 @@ export default function Navbar({
                   </button>
 
                   {mobileCategoriesOpen && (
-                    <div className="ml-4 pl-3 border-l border-[#332A3D] space-y-1.5 py-2">
+                    <div className="ml-4 pl-3 border-l border-[#332A3D] space-y-1 py-2">
                       <button
                         onClick={() => handleLinkClick('/categories', 'stitched')}
-                        className="w-full text-left py-1.5 text-xs text-gray-300 hover:text-[#E6B8BF]"
+                        className="w-full text-left py-2 px-2.5 rounded-lg text-xs text-gray-200 hover:bg-white/10 hover:text-[#E6B8BF] flex items-center justify-between font-semibold"
                       >
-                        • Stitched Pret
+                        <span>• Stitched</span>
+                        <span className="text-[10px] text-gray-400 font-normal">Ready to wear</span>
                       </button>
                       <button
                         onClick={() => handleLinkClick('/categories', 'unstitched')}
-                        className="w-full text-left py-1.5 text-xs text-gray-300 hover:text-[#E6B8BF]"
+                        className="w-full text-left py-2 px-2.5 rounded-lg text-xs text-gray-200 hover:bg-white/10 hover:text-[#E6B8BF] flex items-center justify-between font-semibold"
                       >
-                        • Unstitched Fabric
+                        <span>• Unstitched</span>
+                        <span className="text-[10px] text-gray-400 font-normal">Pure raw silks</span>
                       </button>
                       <button
                         onClick={() => handleLinkClick('/categories', 'babies')}
-                        className="w-full text-left py-1.5 text-xs text-gray-300 hover:text-[#E6B8BF]"
+                        className="w-full text-left py-2 px-2.5 rounded-lg text-xs text-gray-200 hover:bg-white/10 hover:text-[#E6B8BF] flex items-center justify-between font-semibold"
                       >
-                        • Babies Couture
+                        <span>• Babies</span>
+                        <span className="text-[10px] text-gray-400 font-normal">Festive frocks</span>
                       </button>
                       <button
                         onClick={() => handleLinkClick('/categories')}
-                        className="w-full text-left py-1.5 text-xs text-[#D4AF37]"
+                        className="w-full text-left py-2 px-2.5 rounded-lg text-xs text-[#D4AF37] hover:underline font-bold"
                       >
-                        • All Collections →
+                        • All Categories →
                       </button>
                     </div>
                   )}

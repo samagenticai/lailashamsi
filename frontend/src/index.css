@@ -6,9 +6,12 @@
         --font-cinzel: var(--font-primary);
         --font-serif: var(--font-primary);
         --font-sans: var(--font-primary);
+        --font-mono: var(--font-primary);
     }
 
-    * {
+    *,
+    ::before,
+    ::after {
         font-family: var(--font-primary);
     }
 
@@ -28,15 +31,14 @@
     h4,
     h5,
     h6,
-    .font-cinzel {
-        font-family: var(--font-primary) !important;
-        letter-spacing: 0.02em;
-    }
-
-    .font-serif-luxury {
-        font-family: var(--font-primary) !important;
-    }
-
+    select,
+    option,
+    input,
+    button,
+    textarea,
+    .font-cinzel,
+    .font-mono,
+    .font-serif-luxury,
     .font-body {
         font-family: var(--font-primary) !important;
     }
