@@ -21,6 +21,7 @@ import CartDrawer from './components/CartDrawer';
 import WishlistModal from './components/WishlistModal';
 import CheckoutModal from './components/CheckoutModal';
 import AdminPanel from './components/AdminPanel';
+import FontSwitcher from './components/FontSwitcher';
 
 import { PRODUCTS } from './data/products';
 import { SparklesIcon } from './components/Icons';
@@ -437,6 +438,9 @@ export default function App() {
         onClose={handleCloseAdmin}
         onProductsUpdated={loadProducts}
       />
+
+      {/* Floating Luxury Typography Customizer */}
+      <FontSwitcher />
 
     </div>
   );

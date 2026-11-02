@@ -2,21 +2,50 @@
 
 @layer base {
     :root {
-        --font-primary: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        --font-cinzel: var(--font-primary);
-        --font-serif: var(--font-primary);
-        --font-sans: var(--font-primary);
-        --font-mono: var(--font-primary);
+        --font-heading: 'Playfair Display', Georgia, serif;
+        --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        --font-accent: 'Cinzel', serif;
+
+        --font-cinzel: var(--font-heading);
+        --font-serif: var(--font-heading);
+        --font-sans: var(--font-body);
+        --font-mono: var(--font-body);
+    }
+
+    /* Live Luxury Typography Themes */
+    [data-font-theme="playfair"] {
+        --font-heading: 'Playfair Display', Georgia, serif;
+        --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    [data-font-theme="cormorant"] {
+        --font-heading: 'Cormorant Garamond', Georgia, serif;
+        --font-body: 'Tenor Sans', sans-serif;
+    }
+
+    [data-font-theme="cinzel"] {
+        --font-heading: 'Cinzel', Georgia, serif;
+        --font-body: 'Montserrat', sans-serif;
+    }
+
+    [data-font-theme="italiana"] {
+        --font-heading: 'Italiana', Georgia, serif;
+        --font-body: 'Outfit', sans-serif;
+    }
+
+    [data-font-theme="outfit"] {
+        --font-heading: 'Outfit', sans-serif;
+        --font-body: 'Outfit', sans-serif;
     }
 
     *,
     ::before,
     ::after {
-        font-family: var(--font-primary);
+        font-family: var(--font-body);
     }
 
     body {
-        font-family: var(--font-primary) !important;
+        font-family: var(--font-body) !important;
         background-color: #FAFAFA;
         color: #1A1A1A;
         overflow-x: hidden;
@@ -29,18 +58,23 @@
     h2,
     h3,
     h4,
-    h5,
-    h6,
+    .font-cinzel,
+    .font-serif-luxury,
+    .font-heading {
+        font-family: var(--font-heading) !important;
+        letter-spacing: 0.02em;
+    }
+
+    .font-body {
+        font-family: var(--font-body) !important;
+    }
+
     select,
     option,
     input,
     button,
-    textarea,
-    .font-cinzel,
-    .font-mono,
-    .font-serif-luxury,
-    .font-body {
-        font-family: var(--font-primary) !important;
+    textarea {
+        font-family: var(--font-body) !important;
     }
 }
 
