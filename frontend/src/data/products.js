@@ -12,310 +12,304 @@ export const CATEGORIES = [
     count: 14
   },
   {
-    id: 'stitched',
-    name: 'Stitched Pret',
-    subtitle: 'Luxury ready-to-wear & formals',
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=900&auto=format&fit=crop',
-    count: 6
-  },
-  {
     id: 'unstitched',
-    name: 'Unstitched Fabric',
-    subtitle: 'Pure handloomed silks & organza',
+    name: 'Unstitched Suits',
+    subtitle: 'Embroidered lawn suits, raw silks & chiffons',
     image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=900&auto=format&fit=crop',
-    count: 4
-  },
-  {
-    id: 'babies',
-    name: 'Babies & Kids',
-    subtitle: 'Little princess heirloom festive',
-    image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=900&auto=format&fit=crop',
-    count: 2
-  },
-  {
-    id: 'luxury-formals',
-    name: 'Festive Formals',
-    subtitle: 'Handcrafted zardozi & pearls',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=900&auto=format&fit=crop',
-    count: 4
+    count: 5
   },
   {
     id: 'ready-to-wear',
-    name: 'Ready To Wear',
-    subtitle: 'Chic everyday & festive pret',
+    name: 'Ready to Wear',
+    subtitle: 'Tailored shalwar kameez & daily Eastern essentials',
     image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=900&auto=format&fit=crop',
     count: 5
   },
   {
-    id: 'silk-coords',
-    name: 'Silk & Co-ords',
-    subtitle: 'Contemporary modern cuts',
+    id: 'stitched',
+    name: 'Luxury Pret',
+    subtitle: 'Handcrafted embroidered dresses & silk outfits',
+    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=900&auto=format&fit=crop',
+    count: 6
+  },
+  {
+    id: 'luxury-formals',
+    name: 'Festive & Formal Wear',
+    subtitle: 'Traditional zardozi, tilla & formal ensembles',
+    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=900&auto=format&fit=crop',
+    count: 4
+  },
+  {
+    id: 'festive-26',
+    name: 'Eid Collection',
+    subtitle: 'Timeless festive attire for cherished occasions',
     image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=900&auto=format&fit=crop',
-    count: 3
+    count: 4
   }
 ];
 
 export const PRODUCTS = [
   {
     id: 1,
-    title: 'Gul-e-Noor Embroidered Chiffon',
+    title: 'Gul-e-Noor Embroidered Chiffon Suit',
     category: 'luxury-formals',
-    categoryLabel: 'Festive Formals',
+    categoryLabel: 'Festive & Formal Wear',
     price: 185,
     originalPrice: 220,
     rating: 4.9,
     reviewsCount: 38,
-    tag: 'Bestseller',
-    tagColor: 'bg-[#4A0E17] text-[#FAF7F2]',
+    tag: 'Customer Favourite',
+    tagColor: 'bg-[#641E32] text-[#FAF5EC]',
     images: [
       'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop'
     ],
     fabric: 'Pure Chiffon & Handcrafted Organza',
-    pieces: '3 Piece (Shirt, Slip & Dupatta)',
+    pieces: '3 Piece (Kameez, Slip & Dupatta)',
     colors: [
-      { name: 'Blush Rose', hex: '#F2C6CE' },
-      { name: 'Champagne Gold', hex: '#E6D3A3' },
-      { name: 'Royal Ivory', hex: '#F9F6F0' }
+      { name: 'Deep Maroon', hex: '#641E32' },
+      { name: 'Antique Gold', hex: '#B89B62' },
+      { name: 'Warm Ivory', hex: '#FAF5EC' }
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    description: 'An ethereal creation adorned with intricate threadwork, pearls, and iridescent sequins. Features hand-cut scalloped borders and pure crushed silk trousers.',
+    description: 'An elegant 3-piece Pakistani formal suit adorned with intricate threadwork, pearls, and delicate sequins, paired with scalloped organza borders and crushed silk trousers.',
     isNew: true
   },
   {
     id: 2,
-    title: 'Zahra Velvet Rose Couture',
+    title: 'Zahra Velvet Formal Peshwas',
     category: 'luxury-formals',
-    categoryLabel: 'Luxury Formals',
+    categoryLabel: 'Festive & Formal Wear',
     price: 240,
     originalPrice: 290,
     rating: 5.0,
     reviewsCount: 44,
-    tag: 'Trending',
-    tagColor: 'bg-[#C59B27] text-white',
+    tag: 'Customer Favourite',
+    tagColor: 'bg-[#164B3C] text-[#FAF5EC]',
     images: [
       'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000&auto=format&fit=crop'
     ],
     fabric: 'Micro Velvet 9000 & Zari Net',
-    pieces: '3 Piece (Maxi Anarkali & Dupatta)',
+    pieces: '3 Piece (Flared Peshwas, Churidar & Dupatta)',
     colors: [
-      { name: 'Deep Crimson', hex: '#58111A' },
-      { name: 'Midnight Emerald', hex: '#123524' }
+      { name: 'Deep Maroon', hex: '#641E32' },
+      { name: 'Emerald Green', hex: '#164B3C' }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
-    description: 'A regal silhouette sculpted from rich micro velvet, embellished with authentic tilla work, dabka, and crystal accents on the neckline and sleeve cuffs.',
+    description: 'A regal Pakistani formal ensemble crafted from rich micro velvet, embellished with authentic tilla work, dabka, and crystal detailing along the neckline and cuffs.',
     isNew: false
   },
   {
     id: 3,
-    title: 'Ayat Pastel Raw Silk Pret',
+    title: 'Ayat Raw Silk Luxury Pret',
     category: 'ready-to-wear',
-    categoryLabel: 'Ready To Wear',
+    categoryLabel: 'Ready to Wear',
     price: 135,
     originalPrice: 160,
     rating: 4.8,
     reviewsCount: 29,
     tag: 'New Season',
-    tagColor: 'bg-[#2A2325] text-white',
+    tagColor: 'bg-[#282321] text-[#FAF5EC]',
     images: [
       'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop'
     ],
-    fabric: '100% Pure Korean Raw Silk',
-    pieces: '2 Piece (A-line Shirt & Straight Pants)',
+    fabric: '100% Pure Raw Silk',
+    pieces: '2 Piece (A-Line Kameez & Straight Shalwar)',
     colors: [
-      { name: 'Sage Mint', hex: '#B8CDBB' },
-      { name: 'Powder Lilac', hex: '#D6C7E0' }
+      { name: 'Emerald Green', hex: '#164B3C' },
+      { name: 'Soft Beige', hex: '#E8DCCB' }
     ],
     sizes: ['XS', 'S', 'M', 'L'],
-    description: 'Understated luxury for modern soirees. Minimalist cut embellished with delicate French knots and organza insert detailing at the hemline.',
+    description: 'Understated Pakistani luxury pret for graceful gatherings. Tailored raw silk kameez embellished with fine resham embroidery and organza borders at the daman.',
     isNew: true
   },
   {
     id: 4,
-    title: 'Mirha Modern Silk Co-ord Set',
-    category: 'silk-coords',
-    categoryLabel: 'Silk & Co-ords',
+    title: 'Mirha Embroidered Silk Suit',
+    category: 'stitched',
+    categoryLabel: 'Luxury Pret',
     price: 110,
     originalPrice: 130,
     rating: 4.9,
     reviewsCount: 52,
-    tag: 'Hot Pick',
-    tagColor: 'bg-[#C59B27] text-white',
+    tag: 'Customer Favourite',
+    tagColor: 'bg-[#B89B62] text-white',
     images: [
       'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000&auto=format&fit=crop'
     ],
-    fabric: 'Satin Silk with Textured Weave',
-    pieces: '2 Piece (Tunic & Flared Trousers)',
+    fabric: 'Pure Medium Silk with Organza Trim',
+    pieces: '2 Piece (Embroidered Kameez & Trousers)',
     colors: [
-      { name: 'Dusty Peach', hex: '#E8B4A2' },
-      { name: 'Onyx Noir', hex: '#1C1B1F' }
+      { name: 'Soft Beige', hex: '#E8DCCB' },
+      { name: 'Dark Charcoal', hex: '#282321' }
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    description: 'Effortlessly versatile contemporary co-ord set made from feather-light satin silk, designed for smart dining, brunch, and casual dinners.',
+    description: 'Effortlessly refined 2-piece Eastern suit crafted from breathable pure silk, designed for formal lunches, festive dinners, and seasonal celebrations.',
     isNew: false
   },
   {
     id: 5,
     title: 'Shehnai Festive Organza Angrakha',
     category: 'festive-26',
-    categoryLabel: 'Summer Festive \'26',
+    categoryLabel: 'Eid Collection',
     price: 215,
     originalPrice: 260,
     rating: 5.0,
     reviewsCount: 61,
-    tag: 'Exclusive',
-    tagColor: 'bg-[#4A0E17] text-white',
+    tag: 'Eid Edit',
+    tagColor: 'bg-[#641E32] text-[#FAF5EC]',
     images: [
       'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop'
     ],
-    fabric: 'Glass Organza with Cotton Silk Slip',
-    pieces: '3 Piece (Angrakha, Trouser, Dupatta)',
+    fabric: 'Pure Organza with Cotton Silk Slip',
+    pieces: '3 Piece (Angrakha, Shalwar & Dupatta)',
     colors: [
-      { name: 'Golden Apricot', hex: '#EBC49F' },
-      { name: 'Pistachio Glow', hex: '#CFDFC3' }
+      { name: 'Antique Gold', hex: '#B89B62' },
+      { name: 'Emerald Green', hex: '#164B3C' }
     ],
     sizes: ['S', 'M', 'L'],
-    description: 'Traditional royal flare reimagined with contemporary precision. Features gotta patti borders, mirror motifs, and signature handcrafted tassels.',
+    description: 'Traditional Pakistani angler-cut angrakha reimagined with delicate gota kinari borders, tilla motifs, and handcrafted tassels for Eid festivities.',
     isNew: true
   },
   {
     id: 6,
     title: 'Noor-e-Jahan Hand-Worked Kalidar',
     category: 'luxury-formals',
-    categoryLabel: 'Luxury Formals',
+    categoryLabel: 'Festive & Formal Wear',
     price: 275,
     originalPrice: 320,
     rating: 4.9,
     reviewsCount: 31,
-    tag: 'Royal Edition',
-    tagColor: 'bg-[#4A0E17] text-white',
+    tag: 'Heritage Edition',
+    tagColor: 'bg-[#641E32] text-[#FAF5EC]',
     images: [
       'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000&auto=format&fit=crop'
     ],
-    fabric: 'Pure Net with Banarsi Jamawar Trouser',
-    pieces: '3 Piece (Kalidar Gown, Dupatta & Pants)',
+    fabric: 'Pure Net with Jamawar Trousers',
+    pieces: '3 Piece (Kalidar Kameez, Dupatta & Trousers)',
     colors: [
-      { name: 'Ivory Frost', hex: '#FAF9F6' },
-      { name: 'Soft Coral', hex: '#F08080' }
+      { name: 'Warm Ivory', hex: '#FAF5EC' },
+      { name: 'Deep Maroon', hex: '#641E32' }
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    description: 'A 16-kali flowy gown featuring heavy handwork on the bodice, scalloped foil print organza dupatta, and pure silk lining.',
+    description: 'A 16-panel kalidar featuring intricate hand-embroidery on the bodice, scalloped organza dupatta, and pure silk lining.',
     isNew: false
   },
   {
     id: 7,
-    title: 'Mah-e-Nau Printed Lawn Pret',
-    category: 'ready-to-wear',
-    categoryLabel: 'Ready To Wear',
+    title: 'Mah-e-Nau Embroidered Lawn Suit',
+    category: 'unstitched',
+    categoryLabel: 'Unstitched Suits',
+    stitchType: 'unstitched',
     price: 89,
     originalPrice: 110,
     rating: 4.7,
     reviewsCount: 77,
-    tag: 'Daily Luxury',
-    tagColor: 'bg-[#2A2325] text-white',
+    tag: 'Unstitched Lawn',
+    tagColor: 'bg-[#164B3C] text-[#FAF5EC]',
     images: [
       'https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1000&auto=format&fit=crop'
     ],
-    fabric: 'Supima Egyptian Cotton Lawn',
-    pieces: '2 Piece (Embroidered Kurti & Culottes)',
+    fabric: 'Pure Pakistani Fine Cotton Lawn',
+    pieces: '3 Piece Unstitched (Embroidered Lawn Shirt, Chiffon Dupatta & Cambric Trouser)',
     colors: [
-      { name: 'Oatmeal Beige', hex: '#E6DEC9' },
-      { name: 'Azure Sky', hex: '#87CEEB' }
+      { name: 'Soft Beige', hex: '#E8DCCB' },
+      { name: 'Emerald Green', hex: '#164B3C' }
     ],
-    sizes: ['S', 'M', 'L', 'XL'],
-    description: 'Breathable, ultra-fine lawn with digital floral graphics, organza embroidered sleeve borders, and pearl button placket.',
+    sizes: ['Unstitched', 'S', 'M', 'L', 'XL'],
+    description: 'Breathable, ultra-fine Pakistani lawn suit with intricate schiffli embroidery, organza borders, and a pure chiffon printed dupatta.',
     isNew: true
   },
   {
     id: 8,
-    title: 'Seraphina Modern Cape & Slip Set',
-    category: 'silk-coords',
-    categoryLabel: 'Silk & Co-ords',
+    title: 'Zareen Embroidered Shalwar Kameez',
+    category: 'stitched',
+    categoryLabel: 'Luxury Pret',
     price: 165,
     originalPrice: 195,
     rating: 5.0,
     reviewsCount: 19,
-    tag: 'Runway Pick',
-    tagColor: 'bg-[#C59B27] text-white',
+    tag: 'Luxury Pret',
+    tagColor: 'bg-[#B89B62] text-white',
     images: [
       'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=1000&auto=format&fit=crop'
     ],
-    fabric: 'Silk Georgette & Crepe',
-    pieces: '3 Piece (Floor-length Cape, Silk Slip, Trousers)',
+    fabric: 'Pure Karandi Silk & Organza',
+    pieces: '3 Piece (Embroidered Kameez, Shalwar & Organza Dupatta)',
     colors: [
-      { name: 'Champagne Nude', hex: '#EED9C4' },
-      { name: 'Midnight Plum', hex: '#482D42' }
+      { name: 'Warm Ivory', hex: '#FAF5EC' },
+      { name: 'Deep Maroon', hex: '#641E32' }
     ],
     sizes: ['XS', 'S', 'M', 'L'],
-    description: 'Dramatic flowing cape featuring hand-embroidered floral vines along the neckline and cuffs, paired with tailored cigarette pants.',
+    description: 'Classic tailored shalwar kameez featuring hand-embroidered floral motifs along the neckline and sleeves, paired with a pure organza dupatta.',
     isNew: true,
     stitchType: 'stitched'
   },
   {
     id: 9,
-    title: 'Noor Little Princess Heirloom Angrakha',
+    title: 'Noor Festive Heirloom Angrakha',
     category: 'babies',
-    categoryLabel: 'Babies & Kids Couture',
+    categoryLabel: 'Eid Collection',
     stitchType: 'babies',
     price: 95,
     originalPrice: 120,
     rating: 5.0,
     reviewsCount: 22,
-    tag: 'Little Princess',
-    tagColor: 'bg-[#B76E79] text-white',
+    tag: 'Festive Edit',
+    tagColor: 'bg-[#641E32] text-[#FAF5EC]',
     images: [
       'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?q=80&w=1000&auto=format&fit=crop'
     ],
-    fabric: 'Pure Crinkle Chiffon with Hypoallergenic Soft Silk Lining',
-    pieces: '2 Piece (Frock & Soft Pajama)',
+    fabric: 'Pure Crinkle Chiffon with Soft Cotton Silk Lining',
+    pieces: '2 Piece (Angrakha & Soft Shalwar)',
     colors: [
-      { name: 'Blush Pink', hex: '#FAD2E1' },
-      { name: 'Butter Gold', hex: '#FFF1C5' }
+      { name: 'Deep Maroon', hex: '#641E32' },
+      { name: 'Antique Gold', hex: '#B89B62' }
     ],
     sizes: ['0-6M', '6-12M', '1-2Y', '2-4Y', '4-6Y'],
-    description: 'Bespoke heirloom festive ensemble handcrafted for infants and toddlers. Soft feather-light seams and organic breathable silk lining for tender skin.',
+    description: 'Traditional festive Eastern ensemble handcrafted with soft seams and breathable cotton silk lining for comfort and grace.',
     isNew: true
   },
   {
     id: 10,
-    title: 'Inaya Royal Raw Silk Festive Frock',
+    title: 'Inaya Raw Silk Festive Suit',
     category: 'babies',
-    categoryLabel: 'Babies & Kids Couture',
+    categoryLabel: 'Eid Collection',
     stitchType: 'babies',
     price: 85,
     originalPrice: 110,
     rating: 4.9,
     reviewsCount: 31,
-    tag: 'Babies Pret',
-    tagColor: 'bg-[#C59B27] text-white',
+    tag: 'Eid Special',
+    tagColor: 'bg-[#B89B62] text-white',
     images: [
       'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?q=80&w=1000&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=1000&auto=format&fit=crop'
     ],
-    fabric: 'Pure Korean Raw Silk with Soft Cotton Lining',
-    pieces: '2 Piece (Flared Dress & Net Dupatta)',
+    fabric: 'Pure Raw Silk with Soft Lawn Lining',
+    pieces: '2 Piece (Flared Kameez & Net Dupatta)',
     colors: [
-      { name: 'Peach Sorbet', hex: '#FFD7BA' },
-      { name: 'Mint Frost', hex: '#D8F3DC' }
+      { name: 'Soft Beige', hex: '#E8DCCB' },
+      { name: 'Emerald Green', hex: '#164B3C' }
     ],
     sizes: ['6-12M', '1-2Y', '2-4Y', '4-6Y'],
-    description: 'Charming festive attire featuring handcrafted gota borders and subtle pearl tassels, tailored specifically for memorable family celebrations.',
+    description: 'Charming Pakistani festive attire featuring handcrafted gota borders and delicate pearl tassels for memorable family celebrations.',
     isNew: true
   }
 ];

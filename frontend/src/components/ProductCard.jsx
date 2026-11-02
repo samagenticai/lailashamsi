@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 import { HeartIcon, CheckIcon } from './Icons';
 import { CURRENCY_RATES } from '../data/products';
 
-/**
- * Editorial luxury product card (Zara / Sana Safinaz style):
- * flat sharp image, no boxy borders or pill badges, minimal typography,
- * slim "Add to Bag" bar that slides up on hover.
- */
 export default function ProductCard({
   product,
   onQuickView,
@@ -60,7 +55,7 @@ export default function ProductCard({
     >
       {/* ================= IMAGE ================= */}
       <div
-        className="relative aspect-[4/5] overflow-hidden bg-[#F3F1ED] cursor-pointer"
+        className="relative aspect-[4/5] overflow-hidden bg-[#E8DCCB]/40 cursor-pointer border border-[#E8DCCB]"
         onClick={() => onQuickView(product)}
       >
         <img
@@ -78,7 +73,7 @@ export default function ProductCard({
 
         {/* Minimal tag */}
         {(discount > 0 || product.tag) && (
-          <span className="absolute top-3 left-3 z-10 bg-white/95 text-[#1A1A1A] text-[9px] font-medium uppercase tracking-[0.2em] px-2 py-1">
+          <span className="absolute top-3 left-3 z-10 bg-[#641E32] text-[#FAF5EC] text-[9px] font-medium uppercase tracking-[0.18em] px-2.5 py-1">
             {discount > 0 ? `-${discount}%` : product.tag}
           </span>
         )}
@@ -87,11 +82,13 @@ export default function ProductCard({
         <button
           onClick={handleHeartClick}
           aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
-          className={`absolute top-3 right-3 z-10 transition-all duration-300 ${heartPopping ? 'animate-heart-pop' : ''
-            } ${isWishlisted
-              ? 'text-[#B76E79] opacity-100'
-              : 'text-[#1A1A1A] opacity-70 sm:opacity-0 group-hover:opacity-100 hover:text-[#B76E79]'
-            }`}
+          className={`absolute top-3 right-3 z-10 transition-all duration-300 ${
+            heartPopping ? 'animate-heart-pop' : ''
+          } ${
+            isWishlisted
+              ? 'text-[#641E32] opacity-100'
+              : 'text-[#282321] opacity-70 sm:opacity-0 group-hover:opacity-100 hover:text-[#641E32]'
+          }`}
         >
           <HeartIcon className="w-[18px] h-[18px] drop-shadow-sm" filled={isWishlisted} />
         </button>
@@ -102,8 +99,8 @@ export default function ProductCard({
           className="absolute inset-x-0 bottom-0 z-10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
         >
           {showSizePicker ? (
-            <div className="bg-white/97 backdrop-blur-sm px-3 py-3 animate-reveal-up">
-              <p className="text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2 text-center">
+            <div className="bg-[#FAF5EC]/97 backdrop-blur-sm px-3 py-3 animate-reveal-up border-t border-[#E8DCCB]">
+              <p className="text-[9px] uppercase tracking-[0.2em] text-[#282321]/70 mb-2 text-center">
                 Select Size
               </p>
               <div className="flex justify-center flex-wrap gap-1 mb-2.5">
@@ -111,10 +108,11 @@ export default function ProductCard({
                   <button
                     key={sz}
                     onClick={() => setSelectedSize(sz)}
-                    className={`min-w-[30px] h-7 px-1.5 text-[10px] tracking-wider border transition-colors ${selectedSize === sz
-                        ? 'border-[#1A1A1A] bg-[#1A1A1A] text-white'
-                        : 'border-gray-200 text-gray-700 hover:border-[#1A1A1A]'
-                      }`}
+                    className={`min-w-[30px] h-7 px-1.5 text-[10px] tracking-wider border transition-colors ${
+                      selectedSize === sz
+                        ? 'border-[#164B3C] bg-[#164B3C] text-[#FAF5EC]'
+                        : 'border-[#E8DCCB] text-[#282321] hover:border-[#641E32]'
+                    }`}
                   >
                     {sz}
                   </button>
@@ -123,8 +121,11 @@ export default function ProductCard({
               <button
                 onClick={handleQuickAdd}
                 disabled={justAdded}
-                className={`w-full h-8 text-[10px] font-medium uppercase tracking-[0.22em] flex items-center justify-center gap-1.5 transition-colors ${justAdded ? 'bg-[#B76E79] text-white' : 'bg-[#1A1A1A] text-white hover:bg-[#B76E79]'
-                  }`}
+                className={`w-full h-8 text-[10px] font-medium uppercase tracking-[0.2em] flex items-center justify-center gap-1.5 transition-colors ${
+                  justAdded
+                    ? 'bg-[#164B3C] text-[#FAF5EC]'
+                    : 'bg-[#641E32] text-[#FAF5EC] hover:bg-[#164B3C]'
+                }`}
               >
                 {justAdded ? (
                   <>
@@ -136,16 +137,16 @@ export default function ProductCard({
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 divide-x divide-gray-200 bg-white/95 backdrop-blur-sm">
+            <div className="grid grid-cols-2 divide-x divide-[#E8DCCB] bg-[#FAF5EC]/95 backdrop-blur-sm border-t border-[#E8DCCB]">
               <button
                 onClick={() => onQuickView(product)}
-                className="h-10 text-[10px] font-medium uppercase tracking-[0.2em] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors"
+                className="h-10 text-[10px] font-medium uppercase tracking-[0.18em] text-[#282321] hover:bg-[#641E32] hover:text-[#FAF5EC] transition-colors"
               >
                 Quick View
               </button>
               <button
                 onClick={() => setShowSizePicker(true)}
-                className="h-10 text-[10px] font-medium uppercase tracking-[0.2em] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors"
+                className="h-10 text-[10px] font-medium uppercase tracking-[0.18em] text-[#641E32] hover:bg-[#641E32] hover:text-[#FAF5EC] transition-colors"
               >
                 Add to Bag
               </button>
@@ -156,25 +157,24 @@ export default function ProductCard({
 
       {/* ================= DETAILS ================= */}
       <div className="pt-3.5 flex flex-col gap-1">
-        <p className="text-[9.5px] uppercase tracking-[0.22em] text-gray-400">
+        <p className="text-[10px] uppercase tracking-[0.2em] text-[#B89B62] font-medium">
           {product.categoryLabel}
         </p>
 
         <h3
           onClick={() => onQuickView(product)}
-          className="font-serif text-[14px] leading-snug text-[#1A1A1A] cursor-pointer line-clamp-1 transition-colors group-hover:text-[#B76E79]"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          className="font-cinzel text-[15px] font-semibold leading-snug text-[#641E32] cursor-pointer line-clamp-1 transition-colors group-hover:text-[#164B3C]"
         >
           {product.title}
         </h3>
 
         <div className="flex items-center justify-between mt-1">
           <div className="flex items-baseline gap-2">
-            <span className="text-[13px] font-medium text-[#1A1A1A] tracking-wide">
+            <span className="text-[13px] font-semibold text-[#282321] tracking-wide">
               {curr.symbol}{convertedPrice.toLocaleString()}
             </span>
             {discount > 0 && (
-              <span className="text-[11px] text-gray-400 line-through">
+              <span className="text-[11px] text-[#282321]/50 line-through">
                 {curr.symbol}{convertedOriginalPrice.toLocaleString()}
               </span>
             )}
@@ -189,10 +189,11 @@ export default function ProductCard({
                 style={{ backgroundColor: color.hex }}
                 title={color.name}
                 aria-label={color.name}
-                className={`w-2.5 h-2.5 rounded-full transition-all ${selectedColor.name === color.name
-                    ? 'ring-1 ring-offset-2 ring-[#1A1A1A]'
-                    : 'ring-1 ring-gray-200'
-                  }`}
+                className={`w-2.5 h-2.5 rounded-full transition-all ${
+                  selectedColor.name === color.name
+                    ? 'ring-1 ring-offset-2 ring-[#164B3C]'
+                    : 'ring-1 ring-[#E8DCCB]'
+                }`}
               />
             ))}
           </div>

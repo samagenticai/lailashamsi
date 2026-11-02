@@ -81,14 +81,46 @@ export default function Navbar({
   const isAboutActive = currentRoute === '/about';
   const isContactActive = currentRoute === '/contact';
 
+  const dropdownItems = [
+    {
+      id: 'unstitched',
+      title: 'Unstitched Suits',
+      subtitle: 'Embroidered lawn suits, raw silks & chiffons'
+    },
+    {
+      id: 'ready-to-wear',
+      title: 'Ready to Wear',
+      subtitle: 'Tailored shalwar kameez & Eastern essentials'
+    },
+    {
+      id: 'stitched',
+      title: 'Luxury Pret',
+      subtitle: 'Handcrafted embroidered dresses & silk outfits'
+    },
+    {
+      id: 'luxury-formals',
+      title: 'Festive & Formal Wear',
+      subtitle: 'Traditional zardozi, tilla & formal ensembles'
+    },
+    {
+      id: 'festive-26',
+      title: 'Eid Collection',
+      subtitle: 'Timeless festive attire for cherished occasions'
+    }
+  ];
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 transition-all duration-500">
-      
-      {/* Floating Glassmorphism Navbar */}
+      {/* Top Announcement Bar */}
+      <div className="bg-[#641E32] text-[#FAF5EC] text-[11px] sm:text-xs tracking-[0.18em] uppercase py-2 px-4 text-center font-medium border-b border-[#B89B62]/30">
+        Discover Timeless Pakistani Elegance
+      </div>
+
+      {/* Main Navigation Bar */}
       <nav className={`w-full transition-all duration-500 ${
         isScrolled 
-          ? 'bg-white/95 text-[#1A1A1A] backdrop-blur-md shadow-md py-3.5 border-b border-gray-200/60' 
-          : 'bg-black/35 text-white backdrop-blur-md py-4 sm:py-5 border-b border-white/10'
+          ? 'bg-[#FAF5EC]/95 text-[#282321] backdrop-blur-md shadow-md py-3 border-b border-[#E8DCCB]' 
+          : 'bg-[#282321]/55 text-[#FAF5EC] backdrop-blur-md py-3.5 sm:py-4 border-b border-[#FAF5EC]/15'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between">
           
@@ -100,7 +132,7 @@ export default function Navbar({
             <div className="flex items-center lg:hidden mr-1">
               <button 
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-1.5 transition-colors hover:text-[#B76E79]"
+                className="p-1.5 transition-colors hover:text-[#B89B62]"
                 aria-label="Open menu"
               >
                 <MenuIcon className="w-6 h-6" />
@@ -116,20 +148,20 @@ export default function Navbar({
               <img 
                 src="/Logo.jpeg" 
                 alt="Laila Shamsi" 
-                className={`transition-all duration-300 rounded-xl object-contain border border-[#D4AF37]/50 group-hover:scale-105 group-hover:border-[#D4AF37] ${
+                className={`transition-all duration-300 rounded-xl object-contain border border-[#B89B62]/60 group-hover:scale-105 group-hover:border-[#B89B62] ${
                   isScrolled 
-                    ? 'h-10 w-10 sm:h-11 sm:w-11 shadow-md' 
-                    : 'h-11 w-11 sm:h-12 sm:w-12 shadow-[0_0_15px_rgba(212,175,55,0.3)]'
+                    ? 'h-10 w-10 sm:h-11 sm:w-11 shadow-sm' 
+                    : 'h-11 w-11 sm:h-12 sm:w-12 shadow-[0_0_15px_rgba(184,155,98,0.25)]'
                 }`}
               />
               <div className="flex flex-col text-left">
-                <span className={`font-cinzel text-lg sm:text-xl font-bold tracking-[0.2em] uppercase transition-colors leading-tight ${
-                  isScrolled ? 'text-[#1A1A1A] group-hover:text-[#B76E79]' : 'text-white group-hover:text-[#E6B8BF]'
+                <span className={`font-cinzel text-lg sm:text-xl font-bold tracking-[0.16em] uppercase transition-colors leading-tight ${
+                  isScrolled ? 'text-[#641E32] group-hover:text-[#164B3C]' : 'text-[#FAF5EC] group-hover:text-[#E8DCCB]'
                 }`}>
                   LAILA SHAMSI
                 </span>
-                <span className="text-[7.5px] uppercase tracking-[0.35em] text-[#B76E79] font-semibold mt-0.5">
-                  Haute Couture & Pret
+                <span className="text-[8px] uppercase tracking-[0.28em] text-[#B89B62] font-semibold mt-0.5">
+                  Pakistani Eastern Wear
                 </span>
               </div>
             </div>
@@ -138,19 +170,19 @@ export default function Navbar({
           {/* ======================================================== */}
           {/* CENTER: NAVIGATION LINKS WITH LUXURY DROPDOWN           */}
           {/* ======================================================== */}
-          <div className="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-[0.2em] font-medium">
+          <div className="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-[0.16em] font-medium">
             
             {/* 1. HOME */}
             <button
               onClick={() => handleLinkClick('/')}
               className={`relative py-1.5 transition-colors duration-300 group ${
                 isHomeActive 
-                  ? 'text-[#B76E79] font-bold' 
-                  : (isScrolled ? 'hover:text-[#B76E79] text-gray-700' : 'hover:text-[#E6B8BF] text-gray-100')
+                  ? (isScrolled ? 'text-[#164B3C] font-semibold' : 'text-[#B89B62] font-semibold')
+                  : (isScrolled ? 'hover:text-[#641E32] text-[#282321]' : 'hover:text-[#E8DCCB] text-[#FAF5EC]')
               }`}
             >
               <span>Home</span>
-              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#B76E79] transform origin-left transition-transform duration-300 ${
+              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#164B3C] transform origin-left transition-transform duration-300 ${
                 isHomeActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
               }`} />
             </button>
@@ -160,17 +192,17 @@ export default function Navbar({
               onClick={() => handleLinkClick('/new-arrivals')}
               className={`relative py-1.5 transition-colors duration-300 group ${
                 isNewArrivalsActive 
-                  ? 'text-[#B76E79] font-bold' 
-                  : (isScrolled ? 'hover:text-[#B76E79] text-gray-700' : 'hover:text-[#E6B8BF] text-gray-100')
+                  ? (isScrolled ? 'text-[#164B3C] font-semibold' : 'text-[#B89B62] font-semibold')
+                  : (isScrolled ? 'hover:text-[#641E32] text-[#282321]' : 'hover:text-[#E8DCCB] text-[#FAF5EC]')
               }`}
             >
               <span>New Arrivals</span>
-              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#B76E79] transform origin-left transition-transform duration-300 ${
+              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#164B3C] transform origin-left transition-transform duration-300 ${
                 isNewArrivalsActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
               }`} />
             </button>
 
-            {/* 3. CATEGORIES WITH DROPDOWN (Stitched, Unstitched, Babies) */}
+            {/* 3. CATEGORIES WITH DROPDOWN */}
             <div 
               className="relative group py-1.5"
               onMouseEnter={() => setCategoriesDropdownOpen(true)}
@@ -180,180 +212,107 @@ export default function Navbar({
                 onClick={() => handleLinkClick('/categories')}
                 className={`flex items-center gap-1 transition-colors duration-300 ${
                   isCategoriesActive 
-                    ? 'text-[#B76E79] font-bold' 
-                    : (isScrolled ? 'hover:text-[#B76E79] text-gray-700' : 'hover:text-[#E6B8BF] text-gray-100')
+                    ? (isScrolled ? 'text-[#164B3C] font-semibold' : 'text-[#B89B62] font-semibold')
+                    : (isScrolled ? 'hover:text-[#641E32] text-[#282321]' : 'hover:text-[#E8DCCB] text-[#FAF5EC]')
                 }`}
               >
                 <span>Categories</span>
-                <ChevronDownIcon className={`w-3 h-3 transition-transform duration-300 ${categoriesDropdownOpen ? 'rotate-180 text-[#B76E79]' : ''}`} />
-                <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#B76E79] transform origin-left transition-transform duration-300 ${
+                <ChevronDownIcon className={`w-3 h-3 transition-transform duration-300 ${categoriesDropdownOpen ? 'rotate-180 text-[#B89B62]' : ''}`} />
+                <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#164B3C] transform origin-left transition-transform duration-300 ${
                   isCategoriesActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                 }`} />
               </button>
 
-              {/* Luxury Editorial Flyout Dropdown Menu */}
+              {/* Warm Ivory & Deep Maroon Dropdown Menu */}
               {categoriesDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
-                  <div className="w-[370px] bg-white/98 text-[#1A1A1A] backdrop-blur-2xl border border-gray-200/90 rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] p-4 animate-reveal-up border-t-2 border-t-[#B76E79]">
-                    
-                    {/* Flyout Header */}
-                    <div className="px-3 py-2 border-b border-gray-100 flex items-center justify-between mb-2">
-                      <div>
-                        <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-[#B76E79] block">
-                          Signature Atelier Edits
-                        </span>
-                        <span className="text-[11px] text-gray-500 font-normal">
-                          Handcrafted luxury silhouettes
-                        </span>
-                      </div>
-                      <span className="text-[9.5px] uppercase font-semibold tracking-wider text-[#B76E79] bg-[#B76E79]/10 px-2.5 py-1 rounded-full">
-                        '26 Drop
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 z-50">
+                  <div className="w-80 bg-[#FAF5EC] text-[#282321] border border-[#E8DCCB] border-t-2 border-t-[#641E32] rounded-2xl shadow-[0_20px_50px_rgba(40,35,33,0.18)] p-3.5 animate-reveal-up normal-case tracking-normal">
+                    <div className="px-3 py-2 border-b border-[#E8DCCB] flex items-center justify-between mb-1.5">
+                      <span className="font-cinzel text-sm font-bold text-[#641E32]">
+                        Discover Our Collections
+                      </span>
+                      <span className="text-[10px] uppercase tracking-wider text-[#164B3C] font-semibold bg-[#164B3C]/10 px-2 py-0.5 rounded-full">
+                        5 Edits
                       </span>
                     </div>
 
-                    <div className="space-y-1.5">
-                      {/* 1. Stitched */}
-                      <button
-                        onClick={() => handleLinkClick('/categories', 'stitched')}
-                        className="w-full text-left p-2.5 rounded-2xl hover:bg-[#FAF5F6] border border-transparent hover:border-[#B76E79]/20 transition-all flex items-center gap-3.5 group/item"
-                      >
-                        <img
-                          src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=200"
-                          alt="Stitched Pret"
-                          className="w-13 h-16 rounded-xl object-cover object-top border border-gray-200 shadow-sm group-hover/item:scale-105 transition-transform"
-                        />
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <p className="text-sm font-bold text-[#1A1A1A] group-hover/item:text-[#B76E79] transition-colors">
-                              Stitched
+                    <div className="space-y-1">
+                      {dropdownItems.map((item) => (
+                        <button
+                          key={item.id}
+                          onClick={() => handleLinkClick('/categories', item.id)}
+                          className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-[#E8DCCB]/50 transition-all flex items-center justify-between group/item"
+                        >
+                          <div>
+                            <p className="font-cinzel text-sm font-semibold text-[#641E32] group-hover/item:text-[#164B3C] transition-colors">
+                              {item.title}
                             </p>
-                            <span className="text-[9px] uppercase tracking-wider font-semibold text-[#B76E79] bg-[#B76E79]/10 px-2 py-0.5 rounded-full">
-                              Ready To Wear
-                            </span>
-                          </div>
-                          <p className="text-xs text-gray-500 mt-1 line-clamp-1">
-                            Hand-worked raw silks & evening formals
-                          </p>
-                        </div>
-                        <span className="text-sm text-gray-400 group-hover/item:text-[#B76E79] transform transition-transform group-hover/item:translate-x-1 font-bold pr-1">
-                          →
-                        </span>
-                      </button>
-
-                      {/* 2. Unstitched */}
-                      <button
-                        onClick={() => handleLinkClick('/categories', 'unstitched')}
-                        className="w-full text-left p-2.5 rounded-2xl hover:bg-[#FAF5F6] border border-transparent hover:border-[#B76E79]/20 transition-all flex items-center gap-3.5 group/item"
-                      >
-                        <img
-                          src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=200"
-                          alt="Unstitched Fabric"
-                          className="w-13 h-16 rounded-xl object-cover object-top border border-gray-200 shadow-sm group-hover/item:scale-105 transition-transform"
-                        />
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <p className="text-sm font-bold text-[#1A1A1A] group-hover/item:text-[#B76E79] transition-colors">
-                              Unstitched
+                            <p className="text-[11px] text-[#282321]/75 mt-0.5 leading-snug">
+                              {item.subtitle}
                             </p>
-                            <span className="text-[9px] uppercase tracking-wider font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200/60">
-                              Pure Fabric
-                            </span>
                           </div>
-                          <p className="text-xs text-gray-500 mt-1 line-clamp-1">
-                            Pure Korean raw silk & chiffon cuts
-                          </p>
-                        </div>
-                        <span className="text-sm text-gray-400 group-hover/item:text-[#B76E79] transform transition-transform group-hover/item:translate-x-1 font-bold pr-1">
-                          →
-                        </span>
-                      </button>
-
-                      {/* 3. Babies */}
-                      <button
-                        onClick={() => handleLinkClick('/categories', 'babies')}
-                        className="w-full text-left p-2.5 rounded-2xl hover:bg-[#FAF5F6] border border-transparent hover:border-[#B76E79]/20 transition-all flex items-center gap-3.5 group/item"
-                      >
-                        <img
-                          src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?q=80&w=200"
-                          alt="Babies Couture"
-                          className="w-13 h-16 rounded-xl object-cover object-top border border-gray-200 shadow-sm group-hover/item:scale-105 transition-transform"
-                        />
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <p className="text-sm font-bold text-[#1A1A1A] group-hover/item:text-[#B76E79] transition-colors">
-                              Babies
-                            </p>
-                            <span className="text-[9px] uppercase tracking-wider font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200/60">
-                              Ages 0 - 6 Yrs
-                            </span>
-                          </div>
-                          <p className="text-xs text-gray-500 mt-1 line-clamp-1">
-                            Little princess heirloom festive frocks
-                          </p>
-                        </div>
-                        <span className="text-sm text-gray-400 group-hover/item:text-[#B76E79] transform transition-transform group-hover/item:translate-x-1 font-bold pr-1">
-                          →
-                        </span>
-                      </button>
+                          <span className="text-xs text-[#B89B62] group-hover/item:text-[#641E32] transform transition-transform group-hover/item:translate-x-1 font-bold pl-2">
+                            →
+                          </span>
+                        </button>
+                      ))}
                     </div>
 
-                    {/* Bottom CTA Button */}
-                    <div className="pt-3 mt-2 border-t border-gray-100">
+                    <div className="pt-2.5 mt-2 border-t border-[#E8DCCB]">
                       <button
                         onClick={() => handleLinkClick('/categories')}
-                        className="w-full text-center py-2.5 px-4 bg-[#1A1A1A] hover:bg-[#B76E79] text-white rounded-xl text-xs font-semibold uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2 group/all shadow-sm hover:shadow-md"
+                        className="w-full text-center py-2.5 px-4 bg-[#641E32] hover:bg-[#164B3C] text-[#FAF5EC] rounded-xl text-xs font-medium uppercase tracking-[0.15em] transition-all flex items-center justify-center gap-1.5 shadow-sm"
                       >
-                        <span>Explore All Categories</span>
-                        <span className="transition-transform group-hover/all:translate-x-1">→</span>
+                        <span>Shop the Collection</span>
+                        <span>→</span>
                       </button>
                     </div>
-
                   </div>
                 </div>
               )}
             </div>
 
-            {/* 3. SALES */}
+            {/* 4. SALES */}
             <button
               onClick={() => handleLinkClick('/sales')}
               className={`relative py-1.5 transition-colors duration-300 group ${
                 isSalesActive 
-                  ? 'text-[#B76E79] font-bold' 
-                  : (isScrolled ? 'hover:text-[#B76E79] text-gray-700' : 'hover:text-[#E6B8BF] text-gray-100')
+                  ? (isScrolled ? 'text-[#164B3C] font-semibold' : 'text-[#B89B62] font-semibold')
+                  : (isScrolled ? 'hover:text-[#641E32] text-[#282321]' : 'hover:text-[#E8DCCB] text-[#FAF5EC]')
               }`}
             >
               <span>Sales</span>
-              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#B76E79] transform origin-left transition-transform duration-300 ${
+              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#164B3C] transform origin-left transition-transform duration-300 ${
                 isSalesActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
               }`} />
             </button>
 
-            {/* 4. ABOUT */}
+            {/* 5. ABOUT */}
             <button
               onClick={() => handleLinkClick('/about')}
               className={`relative py-1.5 transition-colors duration-300 group ${
                 isAboutActive 
-                  ? 'text-[#B76E79] font-bold' 
-                  : (isScrolled ? 'hover:text-[#B76E79] text-gray-700' : 'hover:text-[#E6B8BF] text-gray-100')
+                  ? (isScrolled ? 'text-[#164B3C] font-semibold' : 'text-[#B89B62] font-semibold')
+                  : (isScrolled ? 'hover:text-[#641E32] text-[#282321]' : 'hover:text-[#E8DCCB] text-[#FAF5EC]')
               }`}
             >
               <span>About</span>
-              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#B76E79] transform origin-left transition-transform duration-300 ${
+              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#164B3C] transform origin-left transition-transform duration-300 ${
                 isAboutActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
               }`} />
             </button>
 
-            {/* 5. CONTACT */}
+            {/* 6. CONTACT */}
             <button
               onClick={() => handleLinkClick('/contact')}
               className={`relative py-1.5 transition-colors duration-300 group ${
                 isContactActive 
-                  ? 'text-[#B76E79] font-bold' 
-                  : (isScrolled ? 'hover:text-[#B76E79] text-gray-700' : 'hover:text-[#E6B8BF] text-gray-100')
+                  ? (isScrolled ? 'text-[#164B3C] font-semibold' : 'text-[#B89B62] font-semibold')
+                  : (isScrolled ? 'hover:text-[#641E32] text-[#282321]' : 'hover:text-[#E8DCCB] text-[#FAF5EC]')
               }`}
             >
               <span>Contact</span>
-              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#B76E79] transform origin-left transition-transform duration-300 ${
+              <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#164B3C] transform origin-left transition-transform duration-300 ${
                 isContactActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
               }`} />
             </button>
@@ -365,24 +324,24 @@ export default function Navbar({
           {/* ======================================================== */}
           <div className="flex items-center space-x-3 sm:space-x-4">
             
-            {/* 1. PROFESSIONAL INLINE EXPANDABLE SEARCH (NO CLUNKY POPUP) */}
+            {/* 1. INLINE EXPANDABLE SEARCH */}
             <div ref={searchContainerRef} className="relative flex items-center">
               {isSearchExpanded ? (
-                <div className="flex items-center bg-[#191520]/95 border border-[#D4AF37]/60 rounded-full pl-3.5 pr-2 py-1.5 shadow-xl animate-reveal-up w-56 sm:w-72 md:w-80 transition-all">
-                  <SearchIcon className="w-3.5 h-3.5 text-[#D4AF37] flex-shrink-0 mr-2" />
+                <div className="flex items-center bg-[#FAF5EC] border border-[#B89B62] rounded-full pl-3.5 pr-2 py-1.5 shadow-lg animate-reveal-up w-56 sm:w-72 md:w-80 transition-all">
+                  <SearchIcon className="w-3.5 h-3.5 text-[#641E32] flex-shrink-0 mr-2" />
                   <input
                     type="text"
                     autoFocus
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search couture, silk, pret..."
-                    className="w-full bg-transparent text-xs text-white placeholder-gray-400 focus:outline-none"
+                    placeholder="Search lawn suits, pret, formals..."
+                    className="w-full bg-transparent text-xs text-[#282321] placeholder-[#282321]/50 focus:outline-none"
                   />
                   {searchQuery && (
                     <button
                       type="button"
                       onClick={() => setSearchQuery('')}
-                      className="text-gray-400 hover:text-white text-xs px-1"
+                      className="text-[#282321]/60 hover:text-[#641E32] text-xs px-1"
                     >
                       ✕
                     </button>
@@ -393,7 +352,7 @@ export default function Navbar({
                       setIsSearchExpanded(false);
                       setSearchQuery('');
                     }}
-                    className="p-1 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors ml-1"
+                    className="p-1 rounded-full text-[#282321]/60 hover:text-[#641E32] hover:bg-[#E8DCCB]/40 transition-colors ml-1"
                   >
                     <CloseIcon className="w-3.5 h-3.5" />
                   </button>
@@ -402,7 +361,7 @@ export default function Navbar({
                 <button 
                   onClick={() => setIsSearchExpanded(true)}
                   className={`p-2 transition-colors rounded-full ${
-                    isScrolled ? 'hover:text-[#B76E79] text-gray-700' : 'hover:text-[#E6B8BF] text-white'
+                    isScrolled ? 'hover:text-[#641E32] text-[#282321]' : 'hover:text-[#E8DCCB] text-[#FAF5EC]'
                   }`}
                   title="Search Collection"
                 >
@@ -412,15 +371,15 @@ export default function Navbar({
 
               {/* Floating Instant Search Results Dropdown */}
               {isSearchExpanded && searchQuery.trim().length > 0 && (
-                <div className="absolute top-full right-0 mt-2 w-72 sm:w-88 bg-[#141217]/95 backdrop-blur-xl border border-[#D4AF37]/40 rounded-2xl shadow-2xl p-3 z-50 animate-reveal-up text-white">
-                  <div className="flex items-center justify-between pb-2 border-b border-[#2C2335] mb-2 text-[10px] font-mono text-gray-400">
-                    <span>LIVE RESULTS</span>
-                    <span className="text-[#D4AF37]">{searchResults.length} matches</span>
+                <div className="absolute top-full right-0 mt-2 w-72 sm:w-88 bg-[#FAF5EC] border border-[#E8DCCB] rounded-2xl shadow-2xl p-3 z-50 animate-reveal-up text-[#282321]">
+                  <div className="flex items-center justify-between pb-2 border-b border-[#E8DCCB] mb-2 text-[10px] uppercase tracking-[0.15em] font-semibold text-[#282321]/70">
+                    <span>Search Results</span>
+                    <span className="text-[#164B3C]">{searchResults.length} matches</span>
                   </div>
 
-                  <div className="max-h-72 overflow-y-auto space-y-2 admin-scrollbar">
+                  <div className="max-h-72 overflow-y-auto space-y-2">
                     {searchResults.length === 0 ? (
-                      <p className="text-xs text-gray-400 text-center py-4">No garments match "{searchQuery}"</p>
+                      <p className="text-xs text-[#282321]/60 text-center py-4">No outfits match "{searchQuery}"</p>
                     ) : (
                       searchResults.map((item) => (
                         <div
@@ -430,18 +389,18 @@ export default function Navbar({
                             setIsSearchExpanded(false);
                             setSearchQuery('');
                           }}
-                          className="flex items-center gap-3 p-2 rounded-xl hover:bg-[#251E2E] cursor-pointer transition-colors"
+                          className="flex items-center gap-3 p-2 rounded-xl hover:bg-[#E8DCCB]/50 cursor-pointer transition-colors"
                         >
                           <img
                             src={item.images?.[0] || 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=80&w=200'}
                             alt=""
-                            className="w-10 h-12 rounded-lg object-cover border border-[#3E324B]"
+                            className="w-10 h-12 rounded-lg object-cover border border-[#E8DCCB]"
                           />
                           <div className="flex-1 min-w-0">
-                            <p className="text-xs font-semibold text-white truncate">{item.title}</p>
-                            <p className="text-[10px] text-[#D4AF37] font-mono">${item.price} • {item.categoryLabel || item.category}</p>
+                            <p className="font-cinzel text-xs font-semibold text-[#641E32] truncate">{item.title}</p>
+                            <p className="text-[11px] font-medium text-[#282321]/75 mt-0.5">${item.price} • {item.categoryLabel || item.category}</p>
                           </div>
-                          <span className="text-xs text-[#B76E79]">→</span>
+                          <span className="text-xs text-[#B89B62]">→</span>
                         </div>
                       ))
                     )}
@@ -454,13 +413,13 @@ export default function Navbar({
             <button 
               onClick={onOpenWishlist}
               className={`relative p-2 transition-colors rounded-full ${
-                isScrolled ? 'hover:text-[#B76E79] text-gray-700' : 'hover:text-[#E6B8BF] text-white'
+                isScrolled ? 'hover:text-[#641E32] text-[#282321]' : 'hover:text-[#E8DCCB] text-[#FAF5EC]'
               }`}
               title="Your Wishlist"
             >
               <HeartIcon className="w-4 h-4" />
               {wishlistCount > 0 && (
-                <span className="absolute 0 top-0.5 right-0.5 w-3.5 h-3.5 bg-[#B76E79] text-white text-[9px] font-bold rounded-full flex items-center justify-center animate-pulse">
+                <span className="absolute top-0.5 right-0.5 w-3.5 h-3.5 bg-[#641E32] text-[#FAF5EC] text-[9px] font-bold rounded-full flex items-center justify-center">
                   {wishlistCount}
                 </span>
               )}
@@ -469,15 +428,11 @@ export default function Navbar({
             {/* 3. SHOPPING CART ICON WITH BADGE */}
             <button 
               onClick={onOpenCart}
-              className={`relative p-2 rounded-full transition-all group flex items-center gap-1.5 ${
-                isScrolled 
-                  ? 'bg-[#1A1A1A] text-white hover:bg-[#B76E79]' 
-                  : 'bg-white/20 text-white backdrop-blur-md hover:bg-[#B76E79]'
-              }`}
+              className="relative p-2 rounded-full transition-all group flex items-center gap-1.5 bg-[#641E32] text-[#FAF5EC] hover:bg-[#164B3C]"
               title="Shopping Cart"
             >
               <ShoppingBagIcon className="w-4 h-4" />
-              <span className="w-4 h-4 bg-[#B76E79] text-white text-[10px] font-bold rounded-full flex items-center justify-center font-mono">
+              <span className="w-4 h-4 bg-[#B89B62] text-[#282321] text-[10px] font-bold rounded-full flex items-center justify-center">
                 {cartCount}
               </span>
             </button>
@@ -494,12 +449,12 @@ export default function Navbar({
         <div className="fixed inset-0 z-50 lg:hidden">
           <div 
             onClick={() => setMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity" 
+            className="fixed inset-0 bg-[#282321]/70 backdrop-blur-sm transition-opacity" 
           />
-          <div className="fixed inset-y-0 left-0 w-4/5 max-w-xs bg-[#141217] text-white shadow-2xl z-50 flex flex-col justify-between overflow-y-auto p-6 border-r border-[#2C2434]">
+          <div className="fixed inset-y-0 left-0 w-4/5 max-w-xs bg-[#FAF5EC] text-[#282321] shadow-2xl z-50 flex flex-col justify-between overflow-y-auto p-6 border-r border-[#E8DCCB]">
             <div>
               {/* Drawer Header with Logo */}
-              <div className="flex items-center justify-between pb-6 border-b border-[#2C2434]">
+              <div className="flex items-center justify-between pb-6 border-b border-[#E8DCCB]">
                 <div 
                   onClick={handleLogoClick}
                   className="flex items-center gap-3 cursor-pointer"
@@ -507,16 +462,16 @@ export default function Navbar({
                   <img 
                     src="/Logo.jpeg" 
                     alt="Laila Shamsi Logo" 
-                    className="h-11 w-11 rounded-xl object-contain border border-[#D4AF37]/50 shadow-md"
+                    className="h-11 w-11 rounded-xl object-contain border border-[#B89B62]/60 shadow-sm"
                   />
                   <div>
-                    <h3 className="font-cinzel text-lg font-bold tracking-wider text-white">LAILA SHAMSI</h3>
-                    <p className="text-[9px] uppercase tracking-[0.3em] text-[#B76E79]">Haute Couture & Pret</p>
+                    <h3 className="font-cinzel text-lg font-bold tracking-wider text-[#641E32]">LAILA SHAMSI</h3>
+                    <p className="text-[9px] uppercase tracking-[0.25em] text-[#B89B62]">Pakistani Eastern Wear</p>
                   </div>
                 </div>
                 <button 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-1.5 text-gray-400 hover:text-white rounded-full"
+                  className="p-1.5 text-[#282321]/60 hover:text-[#641E32] rounded-full"
                 >
                   <CloseIcon className="w-5 h-5" />
                 </button>
@@ -528,8 +483,8 @@ export default function Navbar({
                 {/* Home */}
                 <button
                   onClick={() => handleLinkClick('/')}
-                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] flex items-center justify-between transition-colors ${
-                    isHomeActive ? 'bg-[#B76E79] text-white' : 'text-gray-300 hover:bg-white/10'
+                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.18em] flex items-center justify-between transition-colors ${
+                    isHomeActive ? 'bg-[#164B3C] text-[#FAF5EC]' : 'text-[#282321] hover:bg-[#E8DCCB]/50'
                   }`}
                 >
                   <span>Home</span>
@@ -539,8 +494,8 @@ export default function Navbar({
                 {/* New Arrivals */}
                 <button
                   onClick={() => handleLinkClick('/new-arrivals')}
-                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] flex items-center justify-between transition-colors ${
-                    isNewArrivalsActive ? 'bg-[#B76E79] text-white' : 'text-gray-300 hover:bg-white/10'
+                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.18em] flex items-center justify-between transition-colors ${
+                    isNewArrivalsActive ? 'bg-[#164B3C] text-[#FAF5EC]' : 'text-[#282321] hover:bg-[#E8DCCB]/50'
                   }`}
                 >
                   <span>New Arrivals</span>
@@ -551,43 +506,25 @@ export default function Navbar({
                 <div>
                   <button
                     onClick={() => setMobileCategoriesOpen(!mobileCategoriesOpen)}
-                    className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] flex items-center justify-between transition-colors ${
-                      isCategoriesActive ? 'bg-[#B76E79]/20 text-[#E6B8BF] border border-[#B76E79]/40' : 'text-gray-300 hover:bg-white/10'
+                    className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.18em] flex items-center justify-between transition-colors ${
+                      isCategoriesActive ? 'bg-[#164B3C] text-[#FAF5EC]' : 'text-[#282321] hover:bg-[#E8DCCB]/50'
                     }`}
                   >
                     <span>Categories</span>
-                    <ChevronDownIcon className={`w-3.5 h-3.5 transition-transform ${mobileCategoriesOpen ? 'rotate-180 text-[#B76E79]' : ''}`} />
+                    <ChevronDownIcon className={`w-3.5 h-3.5 transition-transform ${mobileCategoriesOpen ? 'rotate-180 text-[#B89B62]' : ''}`} />
                   </button>
 
                   {mobileCategoriesOpen && (
-                    <div className="ml-4 pl-3 border-l border-[#332A3D] space-y-2 py-2">
-                      <button
-                        onClick={() => handleLinkClick('/categories', 'stitched')}
-                        className="w-full text-left py-1.5 text-xs text-gray-200 hover:text-[#E6B8BF] flex items-center justify-between"
-                      >
-                        <span className="font-semibold">• Stitched</span>
-                        <span className="text-[10px] text-gray-400">Ready to wear</span>
-                      </button>
-                      <button
-                        onClick={() => handleLinkClick('/categories', 'unstitched')}
-                        className="w-full text-left py-1.5 text-xs text-gray-200 hover:text-[#E6B8BF] flex items-center justify-between"
-                      >
-                        <span className="font-semibold">• Unstitched</span>
-                        <span className="text-[10px] text-gray-400">Pure raw silk</span>
-                      </button>
-                      <button
-                        onClick={() => handleLinkClick('/categories', 'babies')}
-                        className="w-full text-left py-1.5 text-xs text-gray-200 hover:text-[#E6B8BF] flex items-center justify-between"
-                      >
-                        <span className="font-semibold">• Babies</span>
-                        <span className="text-[10px] text-gray-400">Couture frocks</span>
-                      </button>
-                      <button
-                        onClick={() => handleLinkClick('/categories')}
-                        className="w-full text-left pt-1 text-xs text-[#D4AF37] hover:underline font-bold"
-                      >
-                        • Explore All Categories →
-                      </button>
+                    <div className="ml-4 pl-3 border-l border-[#E8DCCB] space-y-1.5 py-2">
+                      {dropdownItems.map((item) => (
+                        <button
+                          key={item.id}
+                          onClick={() => handleLinkClick('/categories', item.id)}
+                          className="w-full text-left py-1.5 px-2 rounded-lg text-xs text-[#282321] hover:bg-[#E8DCCB]/50 hover:text-[#641E32] font-medium block"
+                        >
+                          • {item.title}
+                        </button>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -595,8 +532,8 @@ export default function Navbar({
                 {/* Sales */}
                 <button
                   onClick={() => handleLinkClick('/sales')}
-                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] flex items-center justify-between transition-colors ${
-                    isSalesActive ? 'bg-[#B76E79] text-white' : 'text-gray-300 hover:bg-white/10'
+                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.18em] flex items-center justify-between transition-colors ${
+                    isSalesActive ? 'bg-[#164B3C] text-[#FAF5EC]' : 'text-[#282321] hover:bg-[#E8DCCB]/50'
                   }`}
                 >
                   <span>Sales</span>
@@ -606,8 +543,8 @@ export default function Navbar({
                 {/* About */}
                 <button
                   onClick={() => handleLinkClick('/about')}
-                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] flex items-center justify-between transition-colors ${
-                    isAboutActive ? 'bg-[#B76E79] text-white' : 'text-gray-300 hover:bg-white/10'
+                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.18em] flex items-center justify-between transition-colors ${
+                    isAboutActive ? 'bg-[#164B3C] text-[#FAF5EC]' : 'text-[#282321] hover:bg-[#E8DCCB]/50'
                   }`}
                 >
                   <span>About</span>
@@ -617,8 +554,8 @@ export default function Navbar({
                 {/* Contact */}
                 <button
                   onClick={() => handleLinkClick('/contact')}
-                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.2em] flex items-center justify-between transition-colors ${
-                    isContactActive ? 'bg-[#B76E79] text-white' : 'text-gray-300 hover:bg-white/10'
+                  className={`w-full text-left py-2.5 px-3.5 rounded-xl text-xs font-semibold uppercase tracking-[0.18em] flex items-center justify-between transition-colors ${
+                    isContactActive ? 'bg-[#164B3C] text-[#FAF5EC]' : 'text-[#282321] hover:bg-[#E8DCCB]/50'
                   }`}
                 >
                   <span>Contact</span>
@@ -628,10 +565,10 @@ export default function Navbar({
               </div>
             </div>
 
-            <div className="pt-6 border-t border-[#2C2434] text-xs text-gray-400 space-y-1">
-              <p className="font-semibold text-white">Laila Shamsi Atelier</p>
-              <p className="text-[11px] text-gray-500">
-                Pure Korean raw silk, organza & handcrafted zardozi embroidery.
+            <div className="pt-6 border-t border-[#E8DCCB] text-xs text-[#282321]/75 space-y-1">
+              <p className="font-cinzel font-semibold text-[#641E32]">Laila Shamsi</p>
+              <p className="text-[11px]">
+                Celebrating Pakistani Fashion, One Beautiful Detail at a Time.
               </p>
             </div>
           </div>

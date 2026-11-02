@@ -1,31 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { TruckIcon, ShieldCheckIcon, SparklesIcon, RefreshCwIcon } from './Icons';
 
-/**
- * Brand service promises — editorial strip with thin dividers,
- * scroll-triggered staggered reveal and refined hover micro-animations.
- */
 export default function ValueProps() {
   const perks = [
     {
       icon: SparklesIcon,
-      title: 'Handcrafted Artistry',
-      desc: '80+ hours of artisan tilla, pearl & zardozi work'
+      title: 'Pakistani Craftsmanship',
+      desc: 'Artisan tilla, resham & zardozi embroidery on every outfit'
     },
     {
       icon: TruckIcon,
-      title: 'Worldwide Express',
-      desc: 'Delivered to UK, USA, UAE & Canada in 3–5 days'
+      title: 'Nationwide & Global Delivery',
+      desc: 'Express shipping across Pakistan, UK, USA, UAE & Canada'
     },
     {
       icon: ShieldCheckIcon,
-      title: 'Certified Pure Fabrics',
-      desc: 'Korean raw silk, glass organza & Swiss lawn'
+      title: 'Pure Natural Fabrics',
+      desc: 'Fine Pakistani lawn, pure raw silk, chiffon & organza'
     },
     {
       icon: RefreshCwIcon,
-      title: 'Bespoke Alterations',
-      desc: 'Complimentary tailoring & 14-day exchange'
+      title: 'Tailored Perfection',
+      desc: 'Refined Eastern cuts with effortless 14-day exchanges'
     }
   ];
 
@@ -52,22 +48,21 @@ export default function ValueProps() {
     <section
       ref={sectionRef}
       aria-label="Our promises"
-      className="relative bg-[#FAFAFA] py-12 sm:py-14"
+      className="relative bg-[#FAF5EC] py-12 sm:py-14 border-b border-[#E8DCCB]"
     >
-      {/* Top & bottom hairlines that draw in from the center */}
       <span
-        className={`absolute top-0 left-1/2 -translate-x-1/2 h-px bg-gradient-to-r from-transparent via-[#B76E79]/50 to-transparent transition-all duration-[1400ms] ease-out ${
+        className={`absolute top-0 left-1/2 -translate-x-1/2 h-px bg-gradient-to-r from-transparent via-[#B89B62]/60 to-transparent transition-all duration-[1400ms] ease-out ${
           visible ? 'w-full' : 'w-0'
         }`}
       />
       <span
-        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-gradient-to-r from-transparent via-[#B76E79]/50 to-transparent transition-all duration-[1400ms] ease-out ${
+        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-gradient-to-r from-transparent via-[#B89B62]/60 to-transparent transition-all duration-[1400ms] ease-out ${
           visible ? 'w-full' : 'w-0'
         }`}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 lg:divide-x lg:divide-gray-200">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 lg:divide-x lg:divide-[#E8DCCB]">
           {perks.map((perk, index) => {
             const Icon = perk.icon;
             return (
@@ -78,21 +73,19 @@ export default function ValueProps() {
                   visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                 }`}
               >
-                {/* Icon with rotating dashed ring */}
                 <div className="relative w-14 h-14 mb-4 flex items-center justify-center">
-                  <span className="absolute inset-0 rounded-full border border-dashed border-[#B76E79]/40 transition-transform duration-[1200ms] ease-out group-hover:rotate-180 group-hover:border-[#B76E79]" />
-                  <span className="absolute inset-[5px] rounded-full bg-white shadow-[0_4px_14px_-6px_rgba(183,110,121,0.35)] transition-all duration-500 group-hover:bg-[#1A1A1A]" />
-                  <Icon className="relative w-5 h-5 text-[#B76E79] transition-all duration-500 group-hover:text-[#E6B8BF] group-hover:scale-110" />
+                  <span className="absolute inset-0 rounded-full border border-dashed border-[#B89B62]/60 transition-transform duration-[1200ms] ease-out group-hover:rotate-180 group-hover:border-[#641E32]" />
+                  <span className="absolute inset-[5px] rounded-full bg-white shadow-sm transition-all duration-500 group-hover:bg-[#641E32]" />
+                  <Icon className="relative w-5 h-5 text-[#641E32] transition-all duration-500 group-hover:text-[#FAF5EC] group-hover:scale-110" />
                 </div>
 
-                <h3 className="font-cinzel text-[12px] sm:text-[13px] font-semibold uppercase tracking-[0.2em] text-[#1A1A1A]">
+                <h3 className="font-cinzel text-[13px] sm:text-sm font-bold text-[#641E32]">
                   {perk.title}
                 </h3>
 
-                {/* Gold underline that grows on hover */}
-                <span className="block h-px w-6 bg-[#B76E79] my-2.5 transition-all duration-500 group-hover:w-14" />
+                <span className="block h-px w-6 bg-[#B89B62] my-2.5 transition-all duration-500 group-hover:w-14" />
 
-                <p className="text-[11.5px] sm:text-xs text-gray-500 font-light leading-relaxed max-w-[220px]">
+                <p className="text-[11.5px] sm:text-xs text-[#282321]/80 font-normal leading-relaxed max-w-[220px]">
                   {perk.desc}
                 </p>
               </div>

@@ -21,7 +21,6 @@ import CartDrawer from './components/CartDrawer';
 import WishlistModal from './components/WishlistModal';
 import CheckoutModal from './components/CheckoutModal';
 import AdminPanel from './components/AdminPanel';
-import FontSwitcher from './components/FontSwitcher';
 
 import { PRODUCTS } from './data/products';
 import { SparklesIcon } from './components/Icons';
@@ -230,12 +229,12 @@ export default function App() {
   const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAFAFA] text-[#1A1A1A] font-body selection:bg-[#B76E79] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#FAF5EC] text-[#282321] font-body selection:bg-[#641E32] selection:text-[#FAF5EC]">
       
       {/* Toast Notification */}
       {toast && (
-        <div className="fixed top-24 right-6 z-50 flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-[#1A1A1A] text-white shadow-2xl border border-[#B76E79]/50 animate-reveal-up text-xs font-semibold tracking-wide">
-          <SparklesIcon className="w-4 h-4 text-[#B76E79]" />
+        <div className="fixed top-24 right-6 z-50 flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-[#282321] text-[#FAF5EC] shadow-2xl border border-[#B89B62]/60 animate-reveal-up text-xs font-semibold tracking-wide">
+          <SparklesIcon className="w-4 h-4 text-[#B89B62]" />
           <span>{toast}</span>
         </div>
       )}
@@ -263,7 +262,7 @@ export default function App() {
                 const el = document.getElementById('collection');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              onLookbookClick={() => navigateTo('/about')}
+              onLookbookClick={() => navigateTo('/new-arrivals')}
             />
 
             {/* 2. Categories Section (Directly under Hero) */}
@@ -438,9 +437,6 @@ export default function App() {
         onClose={handleCloseAdmin}
         onProductsUpdated={loadProducts}
       />
-
-      {/* Floating Luxury Typography Customizer */}
-      <FontSwitcher />
 
     </div>
   );

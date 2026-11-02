@@ -3,39 +3,20 @@
 @layer base {
     :root {
         --font-heading: 'Playfair Display', Georgia, serif;
-        --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        --font-accent: 'Cinzel', serif;
+        --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        --font-accent: 'Playfair Display', Georgia, serif;
 
         --font-cinzel: var(--font-heading);
         --font-serif: var(--font-heading);
         --font-sans: var(--font-body);
         --font-mono: var(--font-body);
-    }
 
-    /* Live Luxury Typography Themes */
-    [data-font-theme="playfair"] {
-        --font-heading: 'Playfair Display', Georgia, serif;
-        --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-
-    [data-font-theme="cormorant"] {
-        --font-heading: 'Cormorant Garamond', Georgia, serif;
-        --font-body: 'Tenor Sans', sans-serif;
-    }
-
-    [data-font-theme="cinzel"] {
-        --font-heading: 'Cinzel', Georgia, serif;
-        --font-body: 'Montserrat', sans-serif;
-    }
-
-    [data-font-theme="italiana"] {
-        --font-heading: 'Italiana', Georgia, serif;
-        --font-body: 'Outfit', sans-serif;
-    }
-
-    [data-font-theme="outfit"] {
-        --font-heading: 'Outfit', sans-serif;
-        --font-body: 'Outfit', sans-serif;
+        --color-maroon: #641E32;
+        --color-emerald: #164B3C;
+        --color-ivory: #FAF5EC;
+        --color-gold: #B89B62;
+        --color-beige: #E8DCCB;
+        --color-charcoal: #282321;
     }
 
     *,
@@ -46,12 +27,11 @@
 
     body {
         font-family: var(--font-body) !important;
-        background-color: #FAFAFA;
-        color: #1A1A1A;
+        background-color: #FAF5EC;
+        color: #282321;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        letter-spacing: -0.01em;
     }
 
     h1,
@@ -60,12 +40,14 @@
     h4,
     .font-cinzel,
     .font-serif-luxury,
+    .font-serif,
     .font-heading {
         font-family: var(--font-heading) !important;
-        letter-spacing: 0.02em;
+        letter-spacing: 0.01em;
     }
 
-    .font-body {
+    .font-body,
+    .font-mono {
         font-family: var(--font-body) !important;
     }
 
@@ -79,31 +61,31 @@
 }
 
 /* ========================================================
-   'MIDNIGHT ELEGANCE & ROSE GOLD' TOKENS & ACCENTS
+   PAKISTANI EASTERN WEAR PALETTE TOKENS & ACCENTS
    ======================================================== */
 
 .rosegold-gradient-text {
-    background: linear-gradient(135deg, #E6B8BF 0%, #B76E79 45%, #8C4751 100%);
+    background: linear-gradient(135deg, #D4BE8D 0%, #B89B62 45%, #641E32 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .rosegold-gradient-bg {
-    background: linear-gradient(135deg, #C4828C 0%, #B76E79 50%, #944D57 100%);
+    background: linear-gradient(135deg, #7A253D 0%, #641E32 55%, #4A1524 100%);
 }
 
 .rosegold-border-glow {
-    box-shadow: 0 0 20px rgba(183, 110, 121, 0.35);
+    box-shadow: 0 0 20px rgba(184, 155, 98, 0.35);
 }
 
 .charcoal-glass {
-    background: rgba(26, 26, 26, 0.75);
+    background: rgba(40, 35, 33, 0.8);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 }
 
 .white-glass {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(250, 245, 236, 0.9);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 }
@@ -254,12 +236,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #B76E79;
+    background: #B89B62;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #944D57;
+    background: #641E32;
 }
 
 /* Admin Luxury Dark Scrollbar */

@@ -4,20 +4,20 @@ import { HeartIcon, SparklesIcon } from './Icons';
 
 export default function InstagramFeed() {
   return (
-    <section className="py-20 bg-white border-b border-[#EAE3D2]">
+    <section className="py-20 bg-[#FAF5EC] border-b border-[#E8DCCB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-12">
-          <span className="text-[11px] uppercase tracking-[0.25em] text-[#C59B27] font-semibold">
-            Social Lookbook
+          <span className="text-[11px] uppercase tracking-[0.22em] text-[#B89B62] font-semibold">
+            Style Inspiration
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#24171A] mt-2 mb-2">
-            #LailaShamsiGirls
+          <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-[#641E32] mt-2 mb-2">
+            #LailaShamsiElegance
           </h2>
-          <div className="w-16 h-0.5 bg-[#D4AF37] mx-auto mb-4" />
-          <p className="text-xs sm:text-sm text-gray-600">
-            Tag @LailaShamsiOfficial on Instagram to be featured on our global digital lookbook.
+          <div className="w-16 h-0.5 bg-[#B89B62] mx-auto mb-4" />
+          <p className="text-xs sm:text-sm text-[#282321]/80">
+            Celebrating Pakistani Fashion, One Beautiful Detail at a Time.
           </p>
         </div>
 
@@ -26,19 +26,19 @@ export default function InstagramFeed() {
           {INSTAGRAM_POSTS.map((post) => (
             <div 
               key={post.id}
-              className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 border border-[#E8DCCB]"
             >
               <img 
                 src={post.image} 
-                alt="Instagram look" 
+                alt="Pakistani Eastern Wear look" 
                 className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-110"
               />
 
-              {/* Hover Dark Overlay */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-3 text-center">
-                <HeartIcon className="w-5 h-5 text-[#E8B4B8] mb-1.5" filled={true} />
-                <span className="font-mono text-xs font-bold">{post.likes}</span>
-                <span className="text-[10px] text-gray-300 mt-1">{post.handle}</span>
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-[#282321]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-[#FAF5EC] p-3 text-center">
+                <HeartIcon className="w-5 h-5 text-[#B89B62] mb-1.5" filled={true} />
+                <span className="text-xs font-bold">{post.likes}</span>
+                <span className="text-[10px] text-[#E8DCCB] mt-1">{post.handle}</span>
               </div>
             </div>
           ))}
@@ -50,9 +50,9 @@ export default function InstagramFeed() {
             href="https://instagram.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-[#2A161B] text-[#2A161B] hover:bg-[#2A161B] hover:text-[#FAF7F2] text-xs font-semibold uppercase tracking-[0.2em] transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#641E32] text-[#FAF5EC] hover:bg-[#164B3C] text-xs font-semibold uppercase tracking-[0.2em] transition-all shadow-sm"
           >
-            <SparklesIcon className="w-4 h-4 text-[#C59B27]" />
+            <SparklesIcon className="w-4 h-4 text-[#B89B62]" />
             <span>Follow @LailaShamsiOfficial</span>
           </a>
         </div>

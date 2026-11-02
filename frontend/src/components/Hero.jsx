@@ -13,26 +13,26 @@ const slides = [
   {
     id: 1,
     image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?q=85&w=2200&auto=format&fit=crop',
-    tag: "Spring / Summer Couture '26",
-    line1: 'Elegance in',
-    line2: 'every thread',
-    subtitle: 'Pure Korean raw silk & handcrafted Mughal zardozi — hand-finished in Lahore.'
+    tag: 'Discover Timeless Pakistani Elegance',
+    line1: 'Tradition Woven',
+    line2: 'with Elegance',
+    subtitle: 'Celebrate your heritage with beautiful Eastern Wear inspired by Pakistani craftsmanship, timeless designs, and modern femininity.'
   },
   {
     id: 2,
     image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=85&w=2200&auto=format&fit=crop',
-    tag: 'The Royal Formal Edit',
-    line1: 'Poise in',
-    line2: 'every drape',
-    subtitle: 'Intricate dabka, cutdana & freshwater pearls on luxurious micro velvet.'
+    tag: 'Discover Timeless Pakistani Elegance',
+    line1: 'Tradition Woven',
+    line2: 'with Elegance',
+    subtitle: 'Celebrate your heritage with beautiful Eastern Wear inspired by Pakistani craftsmanship, timeless designs, and modern femininity.'
   },
   {
     id: 3,
     image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=85&w=2200&auto=format&fit=crop',
-    tag: 'Modern Minimalist Silk',
-    line1: 'Sculpted for',
-    line2: 'modern grace',
-    subtitle: 'Effortless fluid cuts designed for the global tastemaker.'
+    tag: 'Discover Timeless Pakistani Elegance',
+    line1: 'Tradition Woven',
+    line2: 'with Elegance',
+    subtitle: 'Celebrate your heritage with beautiful Eastern Wear inspired by Pakistani craftsmanship, timeless designs, and modern femininity.'
   }
 ];
 
@@ -96,9 +96,9 @@ export default function Hero({ onExploreClick, onLookbookClick }) {
         <div key={s.id} className="max-w-2xl">
           {/* Tag */}
           <div className="flex items-center gap-4 mb-7">
-            <span className="h-px w-12 bg-[#E6B8BF] h-line" style={{ animationDelay: '0.2s' }} />
+            <span className="h-px w-12 bg-[#B89B62] h-line" style={{ animationDelay: '0.2s' }} />
             <span
-              className="h-fade text-[11px] sm:text-xs uppercase tracking-[0.4em] text-[#E6B8BF] font-medium"
+              className="h-fade text-[11px] sm:text-xs uppercase tracking-[0.3em] text-[#B89B62] font-medium"
               style={{ animationDelay: '0.35s' }}
             >
               {s.tag}
@@ -106,10 +106,10 @@ export default function Hero({ onExploreClick, onLookbookClick }) {
           </div>
 
           {/* Headline with masked reveal */}
-          <h1 className="text-white">
+          <h1 className="text-[#FAF5EC]">
             <span className="block overflow-hidden pb-1">
               <span
-                className="h-mask block font-cinzel text-[42px] sm:text-6xl lg:text-[84px] font-semibold uppercase leading-[1.02] tracking-[0.03em]"
+                className="h-mask block font-cinzel text-[38px] sm:text-6xl lg:text-[74px] font-semibold leading-[1.06] tracking-[0.02em]"
                 style={{ animationDelay: '0.45s' }}
               >
                 {s.line1}
@@ -117,7 +117,7 @@ export default function Hero({ onExploreClick, onLookbookClick }) {
             </span>
             <span className="block overflow-hidden pb-3">
               <span
-                className="h-mask block font-serif-luxury italic font-normal text-[40px] sm:text-6xl lg:text-[80px] leading-[1.05] text-[#E6B8BF]"
+                className="h-mask block font-serif-luxury italic font-normal text-[36px] sm:text-6xl lg:text-[72px] leading-[1.08] text-[#B89B62]"
                 style={{ animationDelay: '0.62s' }}
               >
                 {s.line2}
@@ -126,7 +126,7 @@ export default function Hero({ onExploreClick, onLookbookClick }) {
           </h1>
 
           <p
-            className="h-fade mt-5 max-w-md text-[15px] sm:text-base leading-relaxed text-white/80 font-light"
+            className="h-fade mt-5 max-w-xl text-[15px] sm:text-base leading-relaxed text-[#FAF5EC]/90 font-normal"
             style={{ animationDelay: '0.9s' }}
           >
             {s.subtitle}
@@ -139,20 +139,20 @@ export default function Hero({ onExploreClick, onLookbookClick }) {
           >
             <button
               onClick={onExploreClick}
-              className="group relative overflow-hidden inline-flex items-center gap-3 bg-white text-[#1A1A1A] px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.28em]"
+              className="group relative overflow-hidden inline-flex items-center gap-3 bg-[#641E32] text-[#FAF5EC] px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.22em]"
             >
-              <span className="absolute inset-0 bg-[#B76E79] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)]" />
-              <span className="relative transition-colors duration-500 group-hover:text-white">Shop the Collection</span>
-              <ArrowRightIcon className="relative w-4 h-4 transition-all duration-500 group-hover:text-white group-hover:translate-x-1" />
+              <span className="absolute inset-0 bg-[#164B3C] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)]" />
+              <span className="relative transition-colors duration-500">Shop the Collection</span>
+              <ArrowRightIcon className="relative w-4 h-4 transition-all duration-500 group-hover:translate-x-1" />
             </button>
 
             <button
               onClick={onLookbookClick}
-              className="group relative text-[11px] font-semibold uppercase tracking-[0.28em] text-white py-2"
+              className="group relative text-[11px] font-semibold uppercase tracking-[0.22em] text-[#FAF5EC] py-2"
             >
-              Our Philosophy
-              <span className="absolute left-0 bottom-0 h-px w-full bg-white/50" />
-              <span className="absolute left-0 bottom-0 h-px w-full bg-[#E6B8BF] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+              Explore New Arrivals
+              <span className="absolute left-0 bottom-0 h-px w-full bg-[#FAF5EC]/50" />
+              <span className="absolute left-0 bottom-0 h-px w-full bg-[#B89B62] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
             </button>
           </div>
         </div>
@@ -163,7 +163,7 @@ export default function Hero({ onExploreClick, onLookbookClick }) {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 pb-8 flex items-end justify-between gap-6">
           {/* Counter + progress */}
           <div className="flex items-center gap-5">
-            <span className="font-cinzel text-white text-lg tabular-nums">
+            <span className="font-cinzel text-[#FAF5EC] text-lg tabular-nums">
               {String(current + 1).padStart(2, '0')}
             </span>
             <div className="flex gap-2">
@@ -176,7 +176,7 @@ export default function Hero({ onExploreClick, onLookbookClick }) {
                 >
                   <span
                     key={`${current}-${i}`}
-                    className="absolute inset-0 bg-[#E6B8BF] origin-left"
+                    className="absolute inset-0 bg-[#B89B62] origin-left"
                     style={
                       i < current
                         ? { transform: 'scaleX(1)' }
